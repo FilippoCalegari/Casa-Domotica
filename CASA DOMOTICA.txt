@@ -1,0 +1,6 @@
+CASA DOMOTICA
+- Schermata accesso
+
+- Server: gestisce degli elementi della casa (es: luce cucina, luce salotto, televisione, impianto irrigazione…)
+- Client: decide cosa "manipolare" (es: accendi luce cucina, accendi irrigazione…)
+

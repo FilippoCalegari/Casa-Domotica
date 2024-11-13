@@ -1,0 +1,4 @@
+illuminazione;1
+TV;1
+irrigazione;1
+porte;1

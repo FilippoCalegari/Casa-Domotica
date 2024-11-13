@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proprietari di casa (Client)", "Proprietari di casa (Client)\Proprietari di casa (Client).csproj", "{71164A99-9E08-48CE-8DF3-6F84CBF93E85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sistema domotico (Server)", "..\Sistema domotico (Server)\Sistema domotico (Server)\Sistema domotico (Server).csproj", "{E2052283-D330-4045-AB1D-208B3B011208}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71164A99-9E08-48CE-8DF3-6F84CBF93E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71164A99-9E08-48CE-8DF3-6F84CBF93E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71164A99-9E08-48CE-8DF3-6F84CBF93E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71164A99-9E08-48CE-8DF3-6F84CBF93E85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2052283-D330-4045-AB1D-208B3B011208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2052283-D330-4045-AB1D-208B3B011208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2052283-D330-4045-AB1D-208B3B011208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2052283-D330-4045-AB1D-208B3B011208}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55E053F8-3693-4F77-ADAC-D117BFEE8BF5}
+	EndGlobalSection
+EndGlobal
