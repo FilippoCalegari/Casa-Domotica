@@ -49,6 +49,7 @@
             this.btn_entrances.TabIndex = 0;
             this.btn_entrances.Text = "Porte";
             this.btn_entrances.UseVisualStyleBackColor = true;
+            this.btn_entrances.Click += new System.EventHandler(this.btn_entrances_Click);
             // 
             // btn_watering
             // 
@@ -62,6 +63,7 @@
             this.btn_watering.TabIndex = 1;
             this.btn_watering.Text = "Irrigazione";
             this.btn_watering.UseVisualStyleBackColor = true;
+            this.btn_watering.Click += new System.EventHandler(this.btn_watering_Click);
             // 
             // btn_TV
             // 
@@ -75,6 +77,7 @@
             this.btn_TV.TabIndex = 2;
             this.btn_TV.Text = "TV";
             this.btn_TV.UseVisualStyleBackColor = true;
+            this.btn_TV.Click += new System.EventHandler(this.btn_TV_Click);
             // 
             // btn_lights
             // 

@@ -82,5 +82,23 @@ namespace Proprietari_di_casa__Client_
             string lights = "Lights";
             StartClient(lights);
         }
+
+        private void btn_TV_Click(object sender, EventArgs e)
+        {
+            string TV = "TV";
+            StartClient(TV);
+        }
+
+        private void btn_watering_Click(object sender, EventArgs e)
+        {
+            string watering = "Water";
+            StartClient(watering);
+        }
+
+        private void btn_entrances_Click(object sender, EventArgs e)
+        {
+            string door = "Door";
+            StartClient(door);
+        }
     }
 }

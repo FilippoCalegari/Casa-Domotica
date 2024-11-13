@@ -1,5 +1,6 @@
 ﻿using Sistema_domotico__Server_.Properties;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -25,8 +26,6 @@ public class SynchronousSocketListener
         Socket listener = new Socket(ipAddress.AddressFamily,
             SocketType.Stream, ProtocolType.Tcp);
 
-        Console.WriteLine("Timeout : {0}", listener.ReceiveTimeout);
-
         // Bind the socket to the local endpoint and   
         // listen for incoming connections.
         try
@@ -37,7 +36,6 @@ public class SynchronousSocketListener
             // Start listening for connections.  
             while (true)
             {
-                Console.WriteLine("Waiting for a connection...");
                 // Program is suspended while waiting for an incoming connection.  
                 Socket handler = listener.Accept();
                 count++;
@@ -65,7 +63,6 @@ public class SynchronousSocketListener
 }
 public class ClientManager
 {
-
     Socket clientSocket;
     byte[] bytes = new Byte[1024];
     String data = "";
@@ -78,37 +75,110 @@ public class ClientManager
     }
     public void doClient()
     {
-        string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "Elementi.txt");
-        StreamReader sr = new StreamReader(filePath);
-        StreamWriter sw = new StreamWriter(filePath);
-        int bytesRec = clientSocket.Receive(bytes);
+        string filePath = @"..\..\Resources\Elementi.txt";
+        List <Elementi> elements = new List <Elementi>();
+        Elementi element;
 
-        string line = sr.ReadLine();
-        string[] status = line.Split(';');
-
-        data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
-        
-        switch (data)
+        using (StreamReader sr = new StreamReader(filePath))
         {
-            case "Lights":
-                if (status[1] == "1")
-                {
-                    Console.WriteLine($"Luci: ON");
-                    status[1] = "0";
-                }
-                else
-                {
-                    Console.WriteLine($"Luci: OFF");
-                    status[1] = "1";
-                }
-            break;
+            int bytesRec = clientSocket.Receive(bytes);
 
+            foreach (string linea in File.ReadLines(filePath))
+            {
+                string line = sr.ReadLine();
+                element = new Elementi(line.Split(';')[0], int.Parse(line.Split(';')[1]));
+                elements.Add(element);
+            }
+
+            data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+
+            switch (data)
+            {
+                case "Lights":
+                    if (elements[0].Valore == 1)
+                    {
+                        Console.WriteLine($"Luci: ON");
+                        elements[0].Valore = 0;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Luci: OFF");
+                        elements[0].Valore = 1;
+                    }
+                    break;
+
+                case "TV":
+                    if (elements[1].Valore == 1)
+                    {
+                        Console.WriteLine($"TV: ON");
+                        elements[1].Valore = 0;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"TV: OFF");
+                        elements[1].Valore = 1;
+                    }
+                    break;
+
+                case "Water":
+                    if (elements[2].Valore == 1)
+                    {
+                        Console.WriteLine($"Irrigazione: ON");
+                        elements[2].Valore = 0;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Irrigazione: OFF");
+                        elements[2].Valore = 1;
+                    }
+                    break;
+
+                case "Door":
+                    if (elements[3].Valore == 1)
+                    {
+                        Console.WriteLine($"Porta: Aperta");
+                        elements[3].Valore = 0;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Porta: Chiusa");
+                        elements[3].Valore = 1;
+                    }
+                    break;
+            }
         }
-            
-        
-        
+
+        using(StreamWriter sw = new StreamWriter(filePath))
+        {
+            foreach (Elementi elemento in elements)
+            {
+                sw.WriteLine($"{elemento.Elemento};{elemento.Valore}");
+            }
+        }
+
         clientSocket.Shutdown(SocketShutdown.Both);
         clientSocket.Close();
         data = "";
+    }
+}
+public class Elementi
+{
+    private string _elemento;
+    public string Elemento
+    {
+        get => _elemento;
+        set => _elemento = value;
+    }
+
+    private int _valore;
+    public int Valore
+    {
+        get => _valore;
+        set => _valore = value;
+    }
+    public Elementi (string elemento, int valore)
+    {
+        Elemento = elemento;
+        Valore = valore;
     }
 }
