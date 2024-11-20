@@ -73,6 +73,16 @@ namespace Proprietari_di_casa__Client_.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Gradient_Background_Credentials {
+            get {
+                object obj = ResourceManager.GetObject("Gradient_Background_Credentials", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Irrigazione_1 {
             get {
                 object obj = ResourceManager.GetObject("Irrigazione_1", resourceCulture);

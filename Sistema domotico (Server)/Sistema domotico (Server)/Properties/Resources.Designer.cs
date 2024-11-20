@@ -61,10 +61,20 @@ namespace Sistema_domotico__Server_.Properties {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a illuminazione;1
-        ///TV;1
-        ///irrigazione;1
-        ///porte;1.
+        ///   Cerca una stringa localizzata simile a .
+        /// </summary>
+        internal static string Credenziali {
+            get {
+                return ResourceManager.GetString("Credenziali", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una stringa localizzata simile a illuminazione;0
+        ///TV;0
+        ///irrigazione;0
+        ///porte;0
+        ///.
         /// </summary>
         internal static string Elementi {
             get {

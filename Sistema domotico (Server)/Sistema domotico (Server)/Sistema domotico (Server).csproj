@@ -63,5 +63,8 @@
   <ItemGroup>
     <None Include="Resources\Elementi.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Credenziali.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

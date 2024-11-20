@@ -95,5 +95,8 @@
   <ItemGroup>
     <None Include="Resources\TV.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gradient Background Credentials.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

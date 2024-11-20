@@ -14,6 +14,7 @@ namespace Proprietari_di_casa__Client_
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+
         }
         public static void StartClient(string oggetto)
         {
@@ -99,6 +100,12 @@ namespace Proprietari_di_casa__Client_
         {
             string door = "Door";
             StartClient(door);
+        }
+
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            string credentials = $"Credentials;{tb_insertName.Text};{tb_insertPassword.Text}";
+            StartClient(credentials);
         }
     }
 }

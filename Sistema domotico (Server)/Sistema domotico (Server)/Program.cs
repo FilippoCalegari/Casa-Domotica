@@ -75,15 +75,19 @@ public class ClientManager
     }
     public void doClient()
     {
-        string filePath = @"..\..\Resources\Elementi.txt";
+        string elementsPath = @"..\..\Resources\Elementi.txt";
+        string credentialsPath = @"..\..\Resources\Credenziali.txt";
         List <Elementi> elements = new List <Elementi>();
         Elementi element;
+        List <Credenziali> credentials = new List <Credenziali>();
+        Credenziali credential;
 
-        using (StreamReader sr = new StreamReader(filePath))
+        using (StreamReader sr = new StreamReader(elementsPath))
         {
             int bytesRec = clientSocket.Receive(bytes);
 
-            foreach (string linea in File.ReadLines(filePath))
+            // Trascrivo gli elementi e i valori in una lista
+            foreach (string linea in File.ReadLines(elementsPath))
             {
                 string line = sr.ReadLine();
                 element = new Elementi(line.Split(';')[0], int.Parse(line.Split(';')[1]));
@@ -91,11 +95,13 @@ public class ClientManager
             }
 
             data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+            string[] messaggio = data.Split(';');
 
-            switch (data)
+            // Controllo che tipo di messaggio è arrivato dal client
+            switch (messaggio[0])
             {
                 case "Lights":
-                    if (elements[0].Valore == 1)
+                    if (elements[0].Valore == 1) // Se accese (= 1)
                     {
                         Console.WriteLine($"Luci: ON");
                         elements[0].Valore = 0;
@@ -108,7 +114,7 @@ public class ClientManager
                     break;
 
                 case "TV":
-                    if (elements[1].Valore == 1)
+                    if (elements[1].Valore == 1) // Se accesa (= 1)
                     {
                         Console.WriteLine($"TV: ON");
                         elements[1].Valore = 0;
@@ -121,7 +127,7 @@ public class ClientManager
                     break;
 
                 case "Water":
-                    if (elements[2].Valore == 1)
+                    if (elements[2].Valore == 1) // Se accesa (= 1)
                     {
                         Console.WriteLine($"Irrigazione: ON");
                         elements[2].Valore = 0;
@@ -134,7 +140,7 @@ public class ClientManager
                     break;
 
                 case "Door":
-                    if (elements[3].Valore == 1)
+                    if (elements[3].Valore == 1) // Se aperta (= 1)
                     {
                         Console.WriteLine($"Porta: Aperta");
                         elements[3].Valore = 0;
@@ -145,11 +151,22 @@ public class ClientManager
                         elements[3].Valore = 1;
                     }
                     break;
+
+                case "Credentials":
+                    credential = new Credenziali(messaggio[1], messaggio[2]);
+                    credentials.Add(credential);
+
+                    using (StreamWriter sw = new StreamWriter(credentialsPath))
+                    {
+                        sw.WriteLine($"{credential.Nome};{credential.Password}");
+                    }
+                    break;
             }
         }
 
-        using(StreamWriter sw = new StreamWriter(filePath))
+        using(StreamWriter sw = new StreamWriter(elementsPath))
         {
+            // Sovrascrivo i valori modificati nel file
             foreach (Elementi elemento in elements)
             {
                 sw.WriteLine($"{elemento.Elemento};{elemento.Valore}");
@@ -159,6 +176,26 @@ public class ClientManager
         clientSocket.Shutdown(SocketShutdown.Both);
         clientSocket.Close();
         data = "";
+    }
+}
+public class Credenziali
+{
+    private string _nome;
+    public string Nome
+    {
+        get => _nome;
+        set => _nome = value;
+    }
+    private string _password;
+    public string Password
+    {
+        get => _password;
+        set => _password = value;
+    }
+    public Credenziali (string nome, string password)
+    {
+        Nome = nome;
+        Password = password;
     }
 }
 public class Elementi
