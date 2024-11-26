@@ -82,14 +82,14 @@ public class ClientManager
         List <Credenziali> credentials = new List <Credenziali>();
         Credenziali credential;
 
-        using (StreamReader sr = new StreamReader(elementsPath))
+        using (StreamReader elementsFile = new StreamReader(elementsPath))
         {
             int bytesRec = clientSocket.Receive(bytes);
 
             // Trascrivo gli elementi e i valori in una lista
             foreach (string linea in File.ReadLines(elementsPath))
             {
-                string line = sr.ReadLine();
+                string line = elementsFile.ReadLine();
                 element = new Elementi(line.Split(';')[0], int.Parse(line.Split(';')[1]));
                 elements.Add(element);
             }
@@ -152,13 +152,34 @@ public class ClientManager
                     }
                     break;
 
-                case "Credentials":
-                    credential = new Credenziali(messaggio[1], messaggio[2]);
-                    credentials.Add(credential);
-
-                    using (StreamWriter sw = new StreamWriter(credentialsPath))
+                case "Login":
+                    using (StreamReader credentialsFile = new StreamReader(credentialsPath))
                     {
-                        sw.WriteLine($"{credential.Nome};{credential.Password}");
+                        string line;
+
+                        while ((line = credentialsFile.ReadLine()) != null)
+                        {
+                            string username = line.Split(';')[0];
+                            string password = line.Split(';')[1];
+
+                            if (username == messaggio[1])
+                            {
+                                Console.WriteLine(messaggio[1]);
+
+                                if (password == messaggio[2])
+                                {
+                                    Console.WriteLine("Giusto.");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Password errata");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Registrati");
+                            }
+                        }
                     }
                     break;
             }

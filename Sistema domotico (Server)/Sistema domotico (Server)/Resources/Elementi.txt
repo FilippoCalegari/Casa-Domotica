@@ -1,4 +1,4 @@
 illuminazione;0
 TV;0
-irrigazione;0
+irrigazione;1
 porte;0

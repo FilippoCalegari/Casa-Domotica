@@ -104,8 +104,14 @@ namespace Proprietari_di_casa__Client_
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            string credentials = $"Credentials;{tb_insertName.Text};{tb_insertPassword.Text}";
-            StartClient(credentials);
+            string login = $"Login;{tb_insertName.Text};{tb_insertPassword.Text}";
+            StartClient(login);
+        }
+
+        private void btn_signIn_Click(object sender, EventArgs e)
+        {
+            string signUp = $"SignUp;{tb_insertName.Text};{tb_insertPassword.Text}";
+            StartClient(signUp);
         }
     }
 }

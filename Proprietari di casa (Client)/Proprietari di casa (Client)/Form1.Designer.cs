@@ -37,6 +37,7 @@
             this.lb_subTitle = new System.Windows.Forms.Label();
             this.panel_App = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lb_orSignIn = new System.Windows.Forms.Label();
             this.btn_signIn = new System.Windows.Forms.Button();
             this.btn_login = new System.Windows.Forms.Button();
             this.tb_insertPassword = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.tb_insertName = new System.Windows.Forms.TextBox();
             this.lb_insertName = new System.Windows.Forms.Label();
             this.lb_appTitleCred = new System.Windows.Forms.Label();
-            this.lb_orSignIn = new System.Windows.Forms.Label();
             this.panel_App.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -166,6 +166,19 @@
             this.panel1.Size = new System.Drawing.Size(159, 435);
             this.panel1.TabIndex = 7;
             // 
+            // lb_orSignIn
+            // 
+            this.lb_orSignIn.BackColor = System.Drawing.Color.Transparent;
+            this.lb_orSignIn.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_orSignIn.ForeColor = System.Drawing.Color.White;
+            this.lb_orSignIn.Location = new System.Drawing.Point(0, 363);
+            this.lb_orSignIn.Name = "lb_orSignIn";
+            this.lb_orSignIn.Size = new System.Drawing.Size(159, 42);
+            this.lb_orSignIn.TabIndex = 12;
+            this.lb_orSignIn.Text = "oppure";
+            this.lb_orSignIn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lb_orSignIn.UseMnemonic = false;
+            // 
             // btn_signIn
             // 
             this.btn_signIn.BackColor = System.Drawing.SystemColors.Control;
@@ -180,6 +193,7 @@
             this.btn_signIn.TabIndex = 11;
             this.btn_signIn.Text = "Registrati";
             this.btn_signIn.UseVisualStyleBackColor = false;
+            this.btn_signIn.Click += new System.EventHandler(this.btn_signIn_Click);
             // 
             // btn_login
             // 
@@ -249,19 +263,6 @@
             this.lb_appTitleCred.TabIndex = 4;
             this.lb_appTitleCred.Text = "MyHome";
             this.lb_appTitleCred.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lb_orSignIn
-            // 
-            this.lb_orSignIn.BackColor = System.Drawing.Color.Transparent;
-            this.lb_orSignIn.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_orSignIn.ForeColor = System.Drawing.Color.White;
-            this.lb_orSignIn.Location = new System.Drawing.Point(0, 363);
-            this.lb_orSignIn.Name = "lb_orSignIn";
-            this.lb_orSignIn.Size = new System.Drawing.Size(159, 42);
-            this.lb_orSignIn.TabIndex = 12;
-            this.lb_orSignIn.Text = "oppure";
-            this.lb_orSignIn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lb_orSignIn.UseMnemonic = false;
             // 
             // Form1
             // 
