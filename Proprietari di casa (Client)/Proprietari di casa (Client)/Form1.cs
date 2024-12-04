@@ -14,28 +14,27 @@ namespace Proprietari_di_casa__Client_
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            StartClient();
         }
-        public static void StartClient(string oggetto)
+
+        // Establish the remote endpoint for the socket.  
+        // This example uses port 11000 on the local computer.  
+        static IPAddress ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
+        static IPEndPoint remoteEP = new IPEndPoint(ipAddress, 5000);
+
+        // Create a TCP/IP  socket.  
+        static Socket sender = new Socket(ipAddress.AddressFamily,
+            SocketType.Stream, ProtocolType.Tcp);
+
+        // Data buffer for incoming data.  
+        static byte[] bytes = new byte[1024];
+
+        public static void StartClient()
         {
-            // Data buffer for incoming data.  
-            byte[] bytes = new byte[1024];
 
             // Connect to a remote device.  
             try
             {
-                string data = "";
-                // Establish the remote endpoint for the socket.  
-                // This example uses port 11000 on the local computer.  
-                IPAddress ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
-                IPEndPoint remoteEP = new IPEndPoint(ipAddress, 5000);
-
-                // Create a TCP/IP  socket.  
-                Socket sender = new Socket(ipAddress.AddressFamily,
-                    SocketType.Stream, ProtocolType.Tcp);
-                Random stringa_casuale = new Random();
-                string stringa_da_inviare = "";
-
                 // Connect the socket to the remote endpoint. Catch any errors.  
                 try
                 {
@@ -43,17 +42,6 @@ namespace Proprietari_di_casa__Client_
 
                     Console.WriteLine("Socket connected to {0}",
                         sender.RemoteEndPoint.ToString());
-
-                    // Encode the data string into a byte array.  
-                    byte[] msg = Encoding.ASCII.GetBytes($"{oggetto}");
-
-                    // Send the data through the socket.  
-                    int bytesSent = sender.Send(msg);
-
-                    // Release the socket.
-                    sender.Shutdown(SocketShutdown.Both);
-                    sender.Close();
-
                 }
                 catch (ArgumentNullException ane)
                 {
@@ -74,6 +62,17 @@ namespace Proprietari_di_casa__Client_
                 Console.WriteLine(e.ToString());
             }
         }
+        public static string SendMessage(string oggetto)
+        {
+            // Echo the data back to the client.  
+            byte[] msg = Encoding.ASCII.GetBytes(oggetto);
+            sender.Send(msg);
+
+            int bytesRec = sender.Receive(bytes);
+            string data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
+
+            return data;
+        }
         private void lb_appTitle_Click(object sender, EventArgs e)
         {
 
@@ -81,37 +80,69 @@ namespace Proprietari_di_casa__Client_
         private void btn_lights_Click(object sender, EventArgs e)
         {
             string lights = "Lights";
-            StartClient(lights);
+            string controllo = SendMessage(lights);
+
+            MessageBox.Show(controllo);
         }
 
         private void btn_TV_Click(object sender, EventArgs e)
         {
             string TV = "TV";
-            StartClient(TV);
+            string controllo = SendMessage(TV);
+
+            MessageBox.Show(controllo);
         }
 
         private void btn_watering_Click(object sender, EventArgs e)
         {
             string watering = "Water";
-            StartClient(watering);
+            string controllo = SendMessage(watering);
+
+            MessageBox.Show(controllo);
         }
 
         private void btn_entrances_Click(object sender, EventArgs e)
         {
             string door = "Door";
-            StartClient(door);
+            string controllo = SendMessage(door);
+
+            MessageBox.Show(controllo);
         }
 
         private void btn_login_Click(object sender, EventArgs e)
         {
             string login = $"Login;{tb_insertName.Text};{tb_insertPassword.Text}";
-            StartClient(login);
+            string accesso = SendMessage(login);
+
+            if (accesso == "RightPassword")
+            {
+                pan_credInterface.Hide();
+            }
+            else if (accesso == "WrongPassword")
+            {
+                lb_accessRules.Text = "Password errata.";
+            }
+            else if (accesso == "SignUp")
+            {
+                lb_accessRules.Text = "Utente non trovato: prova a registrarti.";
+            }
         }
 
         private void btn_signIn_Click(object sender, EventArgs e)
         {
             string signUp = $"SignUp;{tb_insertName.Text};{tb_insertPassword.Text}";
-            StartClient(signUp);
+            string registrazione = SendMessage(signUp);
+
+            if (registrazione == "SignedUp")
+            {
+                pan_credInterface.Hide();
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string exit = $"Exit";
+            SendMessage(exit);
         }
     }
 }

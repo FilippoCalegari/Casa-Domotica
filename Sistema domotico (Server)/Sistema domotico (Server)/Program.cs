@@ -79,13 +79,17 @@ public class ClientManager
         string credentialsPath = @"..\..\Resources\Credenziali.txt";
         List <Elementi> elements = new List <Elementi>();
         Elementi element;
+
         List <Credenziali> credentials = new List <Credenziali>();
+        string username;
+        string password;
         Credenziali credential;
+        string dato;
+
+        byte[] msg;
 
         using (StreamReader elementsFile = new StreamReader(elementsPath))
         {
-            int bytesRec = clientSocket.Receive(bytes);
-
             // Trascrivo gli elementi e i valori in una lista
             foreach (string linea in File.ReadLines(elementsPath))
             {
@@ -93,9 +97,15 @@ public class ClientManager
                 element = new Elementi(line.Split(';')[0], int.Parse(line.Split(';')[1]));
                 elements.Add(element);
             }
+        }
+
+        do
+        {
+            int bytesRec = clientSocket.Receive(bytes);
 
             data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
             string[] messaggio = data.Split(';');
+            dato = messaggio[0];
 
             // Controllo che tipo di messaggio è arrivato dal client
             switch (messaggio[0])
@@ -103,52 +113,76 @@ public class ClientManager
                 case "Lights":
                     if (elements[0].Valore == 1) // Se accese (= 1)
                     {
-                        Console.WriteLine($"Luci: ON");
+                        Console.WriteLine($"Luci: OFF");
                         elements[0].Valore = 0;
+
+                        msg = Encoding.ASCII.GetBytes($"OFF");
+                        clientSocket.Send(msg);
                     }
                     else
                     {
-                        Console.WriteLine($"Luci: OFF");
+                        Console.WriteLine($"Luci: ON");
                         elements[0].Valore = 1;
+
+                        msg = Encoding.ASCII.GetBytes($"ON");
+                        clientSocket.Send(msg);
                     }
                     break;
 
                 case "TV":
                     if (elements[1].Valore == 1) // Se accesa (= 1)
                     {
-                        Console.WriteLine($"TV: ON");
+                        Console.WriteLine($"TV: OFF");
                         elements[1].Valore = 0;
+
+                        msg = Encoding.ASCII.GetBytes($"OFF");
+                        clientSocket.Send(msg);
                     }
                     else
                     {
-                        Console.WriteLine($"TV: OFF");
+                        Console.WriteLine($"TV: ON");
                         elements[1].Valore = 1;
+
+                        msg = Encoding.ASCII.GetBytes($"ON");
+                        clientSocket.Send(msg);
                     }
                     break;
 
                 case "Water":
                     if (elements[2].Valore == 1) // Se accesa (= 1)
                     {
-                        Console.WriteLine($"Irrigazione: ON");
+                        Console.WriteLine($"Irrigazione: OFF");
                         elements[2].Valore = 0;
+
+                        msg = Encoding.ASCII.GetBytes($"OFF");
+                        clientSocket.Send(msg);
                     }
                     else
                     {
-                        Console.WriteLine($"Irrigazione: OFF");
+                        Console.WriteLine($"Irrigazione: ON");
                         elements[2].Valore = 1;
+
+                        msg = Encoding.ASCII.GetBytes($"ON");
+                        clientSocket.Send(msg);
                     }
                     break;
 
                 case "Door":
                     if (elements[3].Valore == 1) // Se aperta (= 1)
                     {
-                        Console.WriteLine($"Porta: Aperta");
+                        Console.WriteLine($"Porta: Chiusa");
                         elements[3].Valore = 0;
+
+                        msg = Encoding.ASCII.GetBytes($"CLOSED");
+                        clientSocket.Send(msg);
                     }
                     else
                     {
-                        Console.WriteLine($"Porta: Chiusa");
+                        Console.WriteLine($"Porta: Aperta");
                         elements[3].Valore = 1;
+
+                        msg = Encoding.ASCII.GetBytes($"OPEN");
+                        clientSocket.Send(msg);
                     }
                     break;
 
@@ -156,36 +190,60 @@ public class ClientManager
                     using (StreamReader credentialsFile = new StreamReader(credentialsPath))
                     {
                         string line;
+                        
 
                         while ((line = credentialsFile.ReadLine()) != null)
                         {
-                            string username = line.Split(';')[0];
-                            string password = line.Split(';')[1];
+                            username = line.Split(';')[0];
+                            password = line.Split(';')[1];
 
                             if (username == messaggio[1])
                             {
-                                Console.WriteLine(messaggio[1]);
-
                                 if (password == messaggio[2])
                                 {
-                                    Console.WriteLine("Giusto.");
+                                    msg = Encoding.ASCII.GetBytes($"RightPassword");
+                                    clientSocket.Send(msg);
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Password errata");
+                                    msg = Encoding.ASCII.GetBytes($"WrongPassword");
+                                    clientSocket.Send(msg);
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("Registrati");
+                                msg = Encoding.ASCII.GetBytes($"SignUp");
+                                clientSocket.Send(msg);
                             }
                         }
                     }
                     break;
-            }
-        }
 
-        using(StreamWriter sw = new StreamWriter(elementsPath))
+                case "SignUp":
+
+                    username = messaggio[1];
+                    password = messaggio[2];
+
+                    credential = new Credenziali(username, password);
+                    credentials.Add(credential);
+
+                    using (StreamWriter sw = File.AppendText(credentialsPath))
+                    {
+                        foreach (Credenziali credenziale in credentials)
+                        {
+                            sw.WriteLine($"{credential.Nome};{credential.Password}");
+                        }
+                    }
+
+                    msg = Encoding.ASCII.GetBytes($"SignedUp");
+                    clientSocket.Send(msg);
+
+                    break;
+            }
+
+        } while (dato != "Exit");
+
+        using (StreamWriter sw = new StreamWriter(elementsPath))
         {
             // Sovrascrivo i valori modificati nel file
             foreach (Elementi elemento in elements)

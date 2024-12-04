@@ -36,7 +36,7 @@
             this.lb_appTitle = new System.Windows.Forms.Label();
             this.lb_subTitle = new System.Windows.Forms.Label();
             this.panel_App = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pan_credInterface = new System.Windows.Forms.Panel();
             this.lb_orSignIn = new System.Windows.Forms.Label();
             this.btn_signIn = new System.Windows.Forms.Button();
             this.btn_login = new System.Windows.Forms.Button();
@@ -45,8 +45,9 @@
             this.tb_insertName = new System.Windows.Forms.TextBox();
             this.lb_insertName = new System.Windows.Forms.Label();
             this.lb_appTitleCred = new System.Windows.Forms.Label();
+            this.lb_accessRules = new System.Windows.Forms.Label();
             this.panel_App.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pan_credInterface.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_entrances
@@ -137,41 +138,43 @@
             // panel_App
             // 
             this.panel_App.BackColor = System.Drawing.Color.Transparent;
+            this.panel_App.Controls.Add(this.pan_credInterface);
             this.panel_App.Controls.Add(this.btn_lights);
             this.panel_App.Controls.Add(this.lb_subTitle);
             this.panel_App.Controls.Add(this.btn_entrances);
             this.panel_App.Controls.Add(this.lb_appTitle);
             this.panel_App.Controls.Add(this.btn_watering);
             this.panel_App.Controls.Add(this.btn_TV);
-            this.panel_App.Location = new System.Drawing.Point(12, 12);
+            this.panel_App.Location = new System.Drawing.Point(0, 0);
             this.panel_App.Name = "panel_App";
             this.panel_App.Size = new System.Drawing.Size(159, 435);
             this.panel_App.TabIndex = 6;
             // 
-            // panel1
+            // pan_credInterface
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BackgroundImage = global::Proprietari_di_casa__Client_.Properties.Resources.Gradient_Background_Credentials;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.lb_orSignIn);
-            this.panel1.Controls.Add(this.btn_signIn);
-            this.panel1.Controls.Add(this.btn_login);
-            this.panel1.Controls.Add(this.tb_insertPassword);
-            this.panel1.Controls.Add(this.lb_insertPassword);
-            this.panel1.Controls.Add(this.tb_insertName);
-            this.panel1.Controls.Add(this.lb_insertName);
-            this.panel1.Controls.Add(this.lb_appTitleCred);
-            this.panel1.Location = new System.Drawing.Point(276, 14);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(159, 435);
-            this.panel1.TabIndex = 7;
+            this.pan_credInterface.BackColor = System.Drawing.Color.White;
+            this.pan_credInterface.BackgroundImage = global::Proprietari_di_casa__Client_.Properties.Resources.Gradient_Background_Credentials;
+            this.pan_credInterface.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pan_credInterface.Controls.Add(this.lb_accessRules);
+            this.pan_credInterface.Controls.Add(this.lb_orSignIn);
+            this.pan_credInterface.Controls.Add(this.btn_signIn);
+            this.pan_credInterface.Controls.Add(this.btn_login);
+            this.pan_credInterface.Controls.Add(this.tb_insertPassword);
+            this.pan_credInterface.Controls.Add(this.lb_insertPassword);
+            this.pan_credInterface.Controls.Add(this.tb_insertName);
+            this.pan_credInterface.Controls.Add(this.lb_insertName);
+            this.pan_credInterface.Controls.Add(this.lb_appTitleCred);
+            this.pan_credInterface.Location = new System.Drawing.Point(0, 0);
+            this.pan_credInterface.Name = "pan_credInterface";
+            this.pan_credInterface.Size = new System.Drawing.Size(159, 435);
+            this.pan_credInterface.TabIndex = 7;
             // 
             // lb_orSignIn
             // 
             this.lb_orSignIn.BackColor = System.Drawing.Color.Transparent;
             this.lb_orSignIn.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_orSignIn.ForeColor = System.Drawing.Color.White;
-            this.lb_orSignIn.Location = new System.Drawing.Point(0, 363);
+            this.lb_orSignIn.Location = new System.Drawing.Point(0, 353);
             this.lb_orSignIn.Name = "lb_orSignIn";
             this.lb_orSignIn.Size = new System.Drawing.Size(159, 42);
             this.lb_orSignIn.TabIndex = 12;
@@ -187,7 +190,7 @@
             this.btn_signIn.FlatAppearance.BorderSize = 0;
             this.btn_signIn.Font = new System.Drawing.Font("Agency FB", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_signIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
-            this.btn_signIn.Location = new System.Drawing.Point(3, 408);
+            this.btn_signIn.Location = new System.Drawing.Point(3, 398);
             this.btn_signIn.Name = "btn_signIn";
             this.btn_signIn.Size = new System.Drawing.Size(153, 24);
             this.btn_signIn.TabIndex = 11;
@@ -264,22 +267,34 @@
             this.lb_appTitleCred.Text = "MyHome";
             this.lb_appTitleCred.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lb_accessRules
+            // 
+            this.lb_accessRules.BackColor = System.Drawing.Color.Transparent;
+            this.lb_accessRules.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold);
+            this.lb_accessRules.ForeColor = System.Drawing.Color.White;
+            this.lb_accessRules.Location = new System.Drawing.Point(0, 327);
+            this.lb_accessRules.Name = "lb_accessRules";
+            this.lb_accessRules.Size = new System.Drawing.Size(159, 55);
+            this.lb_accessRules.TabIndex = 13;
+            this.lb_accessRules.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb_accessRules.UseMnemonic = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(507, 461);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(159, 435);
             this.Controls.Add(this.panel_App);
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_App.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pan_credInterface.ResumeLayout(false);
+            this.pan_credInterface.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -292,7 +307,7 @@
         private System.Windows.Forms.Button btn_lights;
         private System.Windows.Forms.Label lb_subTitle;
         private System.Windows.Forms.Panel panel_App;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pan_credInterface;
         private System.Windows.Forms.Label lb_appTitleCred;
         private System.Windows.Forms.Label lb_appTitle;
         private System.Windows.Forms.Label lb_insertName;
@@ -302,6 +317,7 @@
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.Button btn_signIn;
         private System.Windows.Forms.Label lb_orSignIn;
+        private System.Windows.Forms.Label lb_accessRules;
     }
 }
 
