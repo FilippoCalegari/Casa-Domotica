@@ -200,15 +200,18 @@ public class ClientManager
 
                         while ((line = credentialsFile.ReadLine()) != null)
                         {
-                            username = line.Split(';')[0];
-                            password = line.Split(';')[1];
+                            username = line.Split(';')[1];
+                            password = line.Split(';')[2];
 
-                            if (username == messaggio[1])
+                            if (username == messaggio[2])
                             {
-                                if (password == messaggio[2])
+                                if (password == messaggio[3])
                                 {
                                     found = true;
-                                    msg = Encoding.ASCII.GetBytes($"RightPassword");
+
+                                    nome = line.Split(';')[0];
+
+                                    msg = Encoding.ASCII.GetBytes($"RightPassword;{nome}");
                                     clientSocket.Send(msg);
                                     break;
                                 }
@@ -239,14 +242,14 @@ public class ClientManager
                     username = messaggio[2];
                     password = messaggio[3];
 
-                    credential = new Credenziali(username, password);
+                    credential = new Credenziali(nome, username, password);
                     credentials.Add(credential);
 
                     using (StreamWriter sw = File.AppendText(credentialsPath))
                     {
                         foreach (Credenziali credenziale in credentials)
                         {
-                            sw.WriteLine($"{credential.Nome};{credential.Password}");
+                            sw.WriteLine($"{credential.Nome};{credential.Username};{credential.Password}");
                         }
                     }
 
@@ -280,15 +283,22 @@ public class Credenziali
         get => _nome;
         set => _nome = value;
     }
+    private string _username;
+    public string Username
+    {
+        get => _username;
+        set => _username = value;
+    }
     private string _password;
     public string Password
     {
         get => _password;
         set => _password = value;
     }
-    public Credenziali (string nome, string password)
+    public Credenziali (string nome, string username, string password)
     {
         Nome = nome;
+        Username = username;
         Password = password;
     }
 }

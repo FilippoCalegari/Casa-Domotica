@@ -1,5 +1,3 @@
-A;X
-CA;CA
-ALEX;NEGRO
-Filippo;Calegari
-prova;prova
+Filippo;Fil;Cale
+Andrea;An;Cale
+Mirko;Togni;TPS

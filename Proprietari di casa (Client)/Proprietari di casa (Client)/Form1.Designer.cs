@@ -47,14 +47,14 @@
             this.lb_insertName = new System.Windows.Forms.Label();
             this.lb_appTitleCred = new System.Windows.Forms.Label();
             this.pan_signUp = new System.Windows.Forms.Panel();
+            this.tb_registerUsername = new System.Windows.Forms.TextBox();
             this.btn_signUp = new System.Windows.Forms.Button();
             this.tb_registerPassword = new System.Windows.Forms.TextBox();
+            this.lb_registerUsername = new System.Windows.Forms.Label();
             this.lb_registerPassword = new System.Windows.Forms.Label();
             this.tb_registerName = new System.Windows.Forms.TextBox();
             this.lb_registerName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.tb_registerUsername = new System.Windows.Forms.TextBox();
-            this.lb_registerUsername = new System.Windows.Forms.Label();
             this.panel_App.SuspendLayout();
             this.pan_credInterface.SuspendLayout();
             this.pan_signUp.SuspendLayout();
@@ -140,16 +140,14 @@
             // lb_subTitle
             // 
             this.lb_subTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lb_subTitle.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold);
+            this.lb_subTitle.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_subTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
             this.lb_subTitle.Location = new System.Drawing.Point(0, 69);
             this.lb_subTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_subTitle.Name = "lb_subTitle";
-            this.lb_subTitle.Size = new System.Drawing.Size(240, 65);
+            this.lb_subTitle.Size = new System.Drawing.Size(240, 74);
             this.lb_subTitle.TabIndex = 5;
-            this.lb_subTitle.Text = "La tua app di domotica";
             this.lb_subTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lb_subTitle.UseMnemonic = false;
             // 
             // panel_App
             // 
@@ -325,6 +323,16 @@
             this.pan_signUp.Name = "pan_signUp";
             this.pan_signUp.Size = new System.Drawing.Size(238, 669);
             this.pan_signUp.TabIndex = 14;
+            this.pan_signUp.Visible = false;
+            // 
+            // tb_registerUsername
+            // 
+            this.tb_registerUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_registerUsername.Location = new System.Drawing.Point(4, 381);
+            this.tb_registerUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tb_registerUsername.Name = "tb_registerUsername";
+            this.tb_registerUsername.Size = new System.Drawing.Size(228, 26);
+            this.tb_registerUsername.TabIndex = 12;
             // 
             // btn_signUp
             // 
@@ -350,6 +358,20 @@
             this.tb_registerPassword.Name = "tb_registerPassword";
             this.tb_registerPassword.Size = new System.Drawing.Size(228, 26);
             this.tb_registerPassword.TabIndex = 10;
+            // 
+            // lb_registerUsername
+            // 
+            this.lb_registerUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lb_registerUsername.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold);
+            this.lb_registerUsername.ForeColor = System.Drawing.Color.White;
+            this.lb_registerUsername.Location = new System.Drawing.Point(0, 312);
+            this.lb_registerUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_registerUsername.Name = "lb_registerUsername";
+            this.lb_registerUsername.Size = new System.Drawing.Size(238, 65);
+            this.lb_registerUsername.TabIndex = 11;
+            this.lb_registerUsername.Text = "Registra l\'username";
+            this.lb_registerUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lb_registerUsername.UseMnemonic = false;
             // 
             // lb_registerPassword
             // 
@@ -400,29 +422,6 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "MyHome";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tb_registerUsername
-            // 
-            this.tb_registerUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.tb_registerUsername.Location = new System.Drawing.Point(4, 381);
-            this.tb_registerUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tb_registerUsername.Name = "tb_registerUsername";
-            this.tb_registerUsername.Size = new System.Drawing.Size(228, 26);
-            this.tb_registerUsername.TabIndex = 12;
-            // 
-            // lb_registerUsername
-            // 
-            this.lb_registerUsername.BackColor = System.Drawing.Color.Transparent;
-            this.lb_registerUsername.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold);
-            this.lb_registerUsername.ForeColor = System.Drawing.Color.White;
-            this.lb_registerUsername.Location = new System.Drawing.Point(0, 312);
-            this.lb_registerUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lb_registerUsername.Name = "lb_registerUsername";
-            this.lb_registerUsername.Size = new System.Drawing.Size(238, 65);
-            this.lb_registerUsername.TabIndex = 11;
-            this.lb_registerUsername.Text = "Registra l\'username";
-            this.lb_registerUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lb_registerUsername.UseMnemonic = false;
             // 
             // Form1
             // 

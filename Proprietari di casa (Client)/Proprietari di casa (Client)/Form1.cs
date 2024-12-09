@@ -111,18 +111,22 @@ namespace Proprietari_di_casa__Client_
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            string login = $"Login;{tb_insertName.Text};{tb_insertPassword.Text}";
+            string login = $"Login;{tb_registerName.Text};{tb_insertName.Text};{tb_insertPassword.Text}";
             string accesso = SendMessage(login);
 
-            if (accesso == "RightPassword")
+            string message = accesso.Split(';')[0];
+            string nome = accesso.Split(';')[1];
+
+            if (message == "RightPassword")
             {
                 pan_credInterface.Hide();
+                lb_subTitle.Text = $"Ciao {nome}\n Bentornato a casa";
             }
-            else if (accesso == "WrongPassword")
+            else if (message == "WrongPassword")
             {
                 lb_accessRules.Text = "Password errata.";
             }
-            else if (accesso == "SignUp")
+            else if (message == "SignUp")
             {
                 lb_accessRules.Text = "Utente non trovato: prova a registrarti.";
             }
@@ -151,7 +155,7 @@ namespace Proprietari_di_casa__Client_
 
             if (registrazione == "SignedUp")
             {
-                pan_credInterface.Hide();
+                pan_signUp.Hide();
             }
         }
     }
