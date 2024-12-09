@@ -130,13 +130,7 @@ namespace Proprietari_di_casa__Client_
 
         private void btn_signIn_Click(object sender, EventArgs e)
         {
-            string signUp = $"SignUp;{tb_insertName.Text};{tb_insertPassword.Text}";
-            string registrazione = SendMessage(signUp);
-
-            if (registrazione == "SignedUp")
-            {
-                pan_credInterface.Hide();
-            }
+            pan_signUp.Show();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -148,6 +142,17 @@ namespace Proprietari_di_casa__Client_
         private void pan_credInterface_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btn_signUp_Click(object sender, EventArgs e)
+        {
+            string signUp = $"SignUp;{tb_registerName.Text};{tb_registerUsername.Text};{tb_registerPassword.Text}";
+            string registrazione = SendMessage(signUp);
+
+            if (registrazione == "SignedUp")
+            {
+                pan_credInterface.Hide();
+            }
         }
     }
 }

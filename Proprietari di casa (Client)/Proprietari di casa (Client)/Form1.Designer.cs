@@ -46,8 +46,18 @@
             this.tb_insertName = new System.Windows.Forms.TextBox();
             this.lb_insertName = new System.Windows.Forms.Label();
             this.lb_appTitleCred = new System.Windows.Forms.Label();
+            this.pan_signUp = new System.Windows.Forms.Panel();
+            this.btn_signUp = new System.Windows.Forms.Button();
+            this.tb_registerPassword = new System.Windows.Forms.TextBox();
+            this.lb_registerPassword = new System.Windows.Forms.Label();
+            this.tb_registerName = new System.Windows.Forms.TextBox();
+            this.lb_registerName = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tb_registerUsername = new System.Windows.Forms.TextBox();
+            this.lb_registerUsername = new System.Windows.Forms.Label();
             this.panel_App.SuspendLayout();
             this.pan_credInterface.SuspendLayout();
+            this.pan_signUp.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_entrances
@@ -252,10 +262,10 @@
             this.lb_insertPassword.BackColor = System.Drawing.Color.Transparent;
             this.lb_insertPassword.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold);
             this.lb_insertPassword.ForeColor = System.Drawing.Color.White;
-            this.lb_insertPassword.Location = new System.Drawing.Point(-2, 312);
+            this.lb_insertPassword.Location = new System.Drawing.Point(0, 312);
             this.lb_insertPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_insertPassword.Name = "lb_insertPassword";
-            this.lb_insertPassword.Size = new System.Drawing.Size(240, 65);
+            this.lb_insertPassword.Size = new System.Drawing.Size(238, 65);
             this.lb_insertPassword.TabIndex = 9;
             this.lb_insertPassword.Text = "Inserisci la password";
             this.lb_insertPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -275,10 +285,10 @@
             this.lb_insertName.BackColor = System.Drawing.Color.Transparent;
             this.lb_insertName.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold);
             this.lb_insertName.ForeColor = System.Drawing.Color.White;
-            this.lb_insertName.Location = new System.Drawing.Point(-2, 208);
+            this.lb_insertName.Location = new System.Drawing.Point(0, 208);
             this.lb_insertName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lb_insertName.Name = "lb_insertName";
-            this.lb_insertName.Size = new System.Drawing.Size(240, 65);
+            this.lb_insertName.Size = new System.Drawing.Size(238, 65);
             this.lb_insertName.TabIndex = 6;
             this.lb_insertName.Text = "Inserisci l\'username";
             this.lb_insertName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -297,6 +307,123 @@
             this.lb_appTitleCred.Text = "MyHome";
             this.lb_appTitleCred.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pan_signUp
+            // 
+            this.pan_signUp.BackColor = System.Drawing.Color.White;
+            this.pan_signUp.BackgroundImage = global::Proprietari_di_casa__Client_.Properties.Resources.Gradient_Background_Credentials;
+            this.pan_signUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pan_signUp.Controls.Add(this.tb_registerUsername);
+            this.pan_signUp.Controls.Add(this.btn_signUp);
+            this.pan_signUp.Controls.Add(this.tb_registerPassword);
+            this.pan_signUp.Controls.Add(this.lb_registerUsername);
+            this.pan_signUp.Controls.Add(this.lb_registerPassword);
+            this.pan_signUp.Controls.Add(this.tb_registerName);
+            this.pan_signUp.Controls.Add(this.lb_registerName);
+            this.pan_signUp.Controls.Add(this.label5);
+            this.pan_signUp.Location = new System.Drawing.Point(277, 0);
+            this.pan_signUp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pan_signUp.Name = "pan_signUp";
+            this.pan_signUp.Size = new System.Drawing.Size(238, 669);
+            this.pan_signUp.TabIndex = 14;
+            // 
+            // btn_signUp
+            // 
+            this.btn_signUp.BackColor = System.Drawing.SystemColors.Control;
+            this.btn_signUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_signUp.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_signUp.FlatAppearance.BorderSize = 0;
+            this.btn_signUp.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_signUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
+            this.btn_signUp.Location = new System.Drawing.Point(4, 531);
+            this.btn_signUp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_signUp.Name = "btn_signUp";
+            this.btn_signUp.Size = new System.Drawing.Size(230, 54);
+            this.btn_signUp.TabIndex = 6;
+            this.btn_signUp.Text = "Registrati";
+            this.btn_signUp.UseVisualStyleBackColor = false;
+            this.btn_signUp.Click += new System.EventHandler(this.btn_signUp_Click);
+            // 
+            // tb_registerPassword
+            // 
+            this.tb_registerPassword.Location = new System.Drawing.Point(4, 482);
+            this.tb_registerPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tb_registerPassword.Name = "tb_registerPassword";
+            this.tb_registerPassword.Size = new System.Drawing.Size(228, 26);
+            this.tb_registerPassword.TabIndex = 10;
+            // 
+            // lb_registerPassword
+            // 
+            this.lb_registerPassword.BackColor = System.Drawing.Color.Transparent;
+            this.lb_registerPassword.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold);
+            this.lb_registerPassword.ForeColor = System.Drawing.Color.White;
+            this.lb_registerPassword.Location = new System.Drawing.Point(0, 412);
+            this.lb_registerPassword.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_registerPassword.Name = "lb_registerPassword";
+            this.lb_registerPassword.Size = new System.Drawing.Size(238, 65);
+            this.lb_registerPassword.TabIndex = 9;
+            this.lb_registerPassword.Text = "Registra la password";
+            this.lb_registerPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lb_registerPassword.UseMnemonic = false;
+            // 
+            // tb_registerName
+            // 
+            this.tb_registerName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_registerName.Location = new System.Drawing.Point(4, 277);
+            this.tb_registerName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tb_registerName.Name = "tb_registerName";
+            this.tb_registerName.Size = new System.Drawing.Size(228, 26);
+            this.tb_registerName.TabIndex = 8;
+            // 
+            // lb_registerName
+            // 
+            this.lb_registerName.BackColor = System.Drawing.Color.Transparent;
+            this.lb_registerName.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold);
+            this.lb_registerName.ForeColor = System.Drawing.Color.White;
+            this.lb_registerName.Location = new System.Drawing.Point(0, 208);
+            this.lb_registerName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_registerName.Name = "lb_registerName";
+            this.lb_registerName.Size = new System.Drawing.Size(238, 65);
+            this.lb_registerName.TabIndex = 6;
+            this.lb_registerName.Text = "Registra il nome";
+            this.lb_registerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lb_registerName.UseMnemonic = false;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Agency FB", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(0, 118);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(238, 65);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "MyHome";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tb_registerUsername
+            // 
+            this.tb_registerUsername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.tb_registerUsername.Location = new System.Drawing.Point(4, 381);
+            this.tb_registerUsername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tb_registerUsername.Name = "tb_registerUsername";
+            this.tb_registerUsername.Size = new System.Drawing.Size(228, 26);
+            this.tb_registerUsername.TabIndex = 12;
+            // 
+            // lb_registerUsername
+            // 
+            this.lb_registerUsername.BackColor = System.Drawing.Color.Transparent;
+            this.lb_registerUsername.Font = new System.Drawing.Font("Agency FB", 15F, System.Drawing.FontStyle.Bold);
+            this.lb_registerUsername.ForeColor = System.Drawing.Color.White;
+            this.lb_registerUsername.Location = new System.Drawing.Point(0, 312);
+            this.lb_registerUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_registerUsername.Name = "lb_registerUsername";
+            this.lb_registerUsername.Size = new System.Drawing.Size(238, 65);
+            this.lb_registerUsername.TabIndex = 11;
+            this.lb_registerUsername.Text = "Registra l\'username";
+            this.lb_registerUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lb_registerUsername.UseMnemonic = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -304,6 +431,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(788, 890);
+            this.Controls.Add(this.pan_signUp);
             this.Controls.Add(this.panel_App);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -314,6 +442,8 @@
             this.panel_App.ResumeLayout(false);
             this.pan_credInterface.ResumeLayout(false);
             this.pan_credInterface.PerformLayout();
+            this.pan_signUp.ResumeLayout(false);
+            this.pan_signUp.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -337,6 +467,15 @@
         private System.Windows.Forms.Button btn_signIn;
         private System.Windows.Forms.Label lb_orSignIn;
         private System.Windows.Forms.Label lb_accessRules;
+        private System.Windows.Forms.Panel pan_signUp;
+        private System.Windows.Forms.TextBox tb_registerUsername;
+        private System.Windows.Forms.Button btn_signUp;
+        private System.Windows.Forms.TextBox tb_registerPassword;
+        private System.Windows.Forms.Label lb_registerUsername;
+        private System.Windows.Forms.Label lb_registerPassword;
+        private System.Windows.Forms.TextBox tb_registerName;
+        private System.Windows.Forms.Label lb_registerName;
+        private System.Windows.Forms.Label label5;
     }
 }
 

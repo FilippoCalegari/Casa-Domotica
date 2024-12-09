@@ -75,15 +75,21 @@ public class ClientManager
     }
     public void doClient()
     {
+        // Percorsi file
         string elementsPath = @"..\..\Resources\Elementi.txt";
         string credentialsPath = @"..\..\Resources\Credenziali.txt";
+
+        // Elementi
         List <Elementi> elements = new List <Elementi>();
         Elementi element;
 
+        // Credenziali
         List <Credenziali> credentials = new List <Credenziali>();
+        Credenziali credential;
+        string nome;
         string username;
         string password;
-        Credenziali credential;
+
         string dato;
 
         byte[] msg;
@@ -229,8 +235,9 @@ public class ClientManager
 
                 case "SignUp":
 
-                    username = messaggio[1];
-                    password = messaggio[2];
+                    nome = messaggio[1];
+                    username = messaggio[2];
+                    password = messaggio[3];
 
                     credential = new Credenziali(username, password);
                     credentials.Add(credential);
