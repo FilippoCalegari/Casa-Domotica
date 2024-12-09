@@ -190,7 +190,7 @@ public class ClientManager
                     using (StreamReader credentialsFile = new StreamReader(credentialsPath))
                     {
                         string line;
-                        
+                        bool found = true;
 
                         while ((line = credentialsFile.ReadLine()) != null)
                         {
@@ -201,20 +201,28 @@ public class ClientManager
                             {
                                 if (password == messaggio[2])
                                 {
+                                    found = true;
                                     msg = Encoding.ASCII.GetBytes($"RightPassword");
                                     clientSocket.Send(msg);
+                                    break;
                                 }
                                 else
                                 {
                                     msg = Encoding.ASCII.GetBytes($"WrongPassword");
                                     clientSocket.Send(msg);
+                                    break;
                                 }
                             }
                             else
                             {
-                                msg = Encoding.ASCII.GetBytes($"SignUp");
-                                clientSocket.Send(msg);
+                                found = false;
                             }
+                        }
+
+                        if (!found)
+                        {
+                            msg = Encoding.ASCII.GetBytes($"SignUp");
+                            clientSocket.Send(msg);
                         }
                     }
                     break;

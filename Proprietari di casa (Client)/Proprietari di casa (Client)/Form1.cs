@@ -144,5 +144,10 @@ namespace Proprietari_di_casa__Client_
             string exit = $"Exit";
             SendMessage(exit);
         }
+
+        private void pan_credInterface_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
