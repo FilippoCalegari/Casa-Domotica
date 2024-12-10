@@ -98,5 +98,11 @@
   <ItemGroup>
     <None Include="Resources\Gradient Background Credentials.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Image1.png" />
+    <None Include="Resources\Register_iPhone.png" />
+    <None Include="Resources\Normal_iPhone.png" />
+    <None Include="Resources\iPhone.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

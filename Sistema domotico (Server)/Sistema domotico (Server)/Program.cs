@@ -217,7 +217,7 @@ public class ClientManager
                                 }
                                 else
                                 {
-                                    msg = Encoding.ASCII.GetBytes($"WrongPassword");
+                                    msg = Encoding.ASCII.GetBytes($"WrongPassword;null");
                                     clientSocket.Send(msg);
                                     break;
                                 }
@@ -230,7 +230,7 @@ public class ClientManager
 
                         if (!found)
                         {
-                            msg = Encoding.ASCII.GetBytes($"SignUp");
+                            msg = Encoding.ASCII.GetBytes($"SignUp;null");
                             clientSocket.Send(msg);
                         }
                     }

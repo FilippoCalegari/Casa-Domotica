@@ -111,7 +111,7 @@ namespace Proprietari_di_casa__Client_
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            string login = $"Login;{tb_registerName.Text};{tb_insertName.Text};{tb_insertPassword.Text}";
+            string login = $"Login;Nome;{tb_insertName.Text};{tb_insertPassword.Text}";
             string accesso = SendMessage(login);
 
             string message = accesso.Split(';')[0];

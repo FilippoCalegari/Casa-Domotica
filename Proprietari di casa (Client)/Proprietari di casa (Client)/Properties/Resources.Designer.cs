@@ -103,9 +103,29 @@ namespace Proprietari_di_casa__Client_.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Normal_iPhone {
+            get {
+                object obj = ResourceManager.GetObject("Normal_iPhone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Portone {
             get {
                 object obj = ResourceManager.GetObject("Portone", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Register_iPhone {
+            get {
+                object obj = ResourceManager.GetObject("Register_iPhone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

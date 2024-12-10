@@ -130,8 +130,14 @@
   <data name="Led_Light" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Led Light.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Normal_iPhone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Normal_iPhone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Portone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Portone.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Register_iPhone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Register_iPhone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="TV" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TV.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

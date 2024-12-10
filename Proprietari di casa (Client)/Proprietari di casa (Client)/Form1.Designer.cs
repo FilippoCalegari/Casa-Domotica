@@ -55,9 +55,11 @@
             this.tb_registerName = new System.Windows.Forms.TextBox();
             this.lb_registerName = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_App.SuspendLayout();
             this.pan_credInterface.SuspendLayout();
             this.pan_signUp.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_entrances
@@ -152,14 +154,13 @@
             // panel_App
             // 
             this.panel_App.BackColor = System.Drawing.Color.Transparent;
-            this.panel_App.Controls.Add(this.pan_credInterface);
             this.panel_App.Controls.Add(this.btn_lights);
             this.panel_App.Controls.Add(this.lb_subTitle);
             this.panel_App.Controls.Add(this.btn_entrances);
             this.panel_App.Controls.Add(this.lb_appTitle);
             this.panel_App.Controls.Add(this.btn_watering);
             this.panel_App.Controls.Add(this.btn_TV);
-            this.panel_App.Location = new System.Drawing.Point(0, 0);
+            this.panel_App.Location = new System.Drawing.Point(1902, 344);
             this.panel_App.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_App.Name = "panel_App";
             this.panel_App.Size = new System.Drawing.Size(238, 669);
@@ -179,7 +180,7 @@
             this.pan_credInterface.Controls.Add(this.tb_insertName);
             this.pan_credInterface.Controls.Add(this.lb_insertName);
             this.pan_credInterface.Controls.Add(this.lb_appTitleCred);
-            this.pan_credInterface.Location = new System.Drawing.Point(0, 0);
+            this.pan_credInterface.Location = new System.Drawing.Point(1547, 148);
             this.pan_credInterface.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pan_credInterface.Name = "pan_credInterface";
             this.pan_credInterface.Size = new System.Drawing.Size(238, 669);
@@ -318,10 +319,10 @@
             this.pan_signUp.Controls.Add(this.tb_registerName);
             this.pan_signUp.Controls.Add(this.lb_registerName);
             this.pan_signUp.Controls.Add(this.label5);
-            this.pan_signUp.Location = new System.Drawing.Point(277, 0);
+            this.pan_signUp.Location = new System.Drawing.Point(299, 0);
             this.pan_signUp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pan_signUp.Name = "pan_signUp";
-            this.pan_signUp.Size = new System.Drawing.Size(238, 669);
+            this.pan_signUp.Size = new System.Drawing.Size(240, 669);
             this.pan_signUp.TabIndex = 14;
             this.pan_signUp.Visible = false;
             // 
@@ -423,15 +424,28 @@
             this.label5.Text = "MyHome";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Proprietari_di_casa__Client_.Properties.Resources.Normal_iPhone;
+            this.pictureBox1.Location = new System.Drawing.Point(695, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(607, 1244);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(788, 890);
+            this.ClientSize = new System.Drawing.Size(2217, 1487);
+            this.Controls.Add(this.pan_credInterface);
             this.Controls.Add(this.pan_signUp);
             this.Controls.Add(this.panel_App);
+            this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
@@ -443,6 +457,7 @@
             this.pan_credInterface.PerformLayout();
             this.pan_signUp.ResumeLayout(false);
             this.pan_signUp.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -455,17 +470,7 @@
         private System.Windows.Forms.Button btn_lights;
         private System.Windows.Forms.Label lb_subTitle;
         private System.Windows.Forms.Panel panel_App;
-        private System.Windows.Forms.Panel pan_credInterface;
-        private System.Windows.Forms.Label lb_appTitleCred;
         private System.Windows.Forms.Label lb_appTitle;
-        private System.Windows.Forms.Label lb_insertName;
-        private System.Windows.Forms.TextBox tb_insertName;
-        private System.Windows.Forms.TextBox tb_insertPassword;
-        private System.Windows.Forms.Label lb_insertPassword;
-        private System.Windows.Forms.Button btn_login;
-        private System.Windows.Forms.Button btn_signIn;
-        private System.Windows.Forms.Label lb_orSignIn;
-        private System.Windows.Forms.Label lb_accessRules;
         private System.Windows.Forms.Panel pan_signUp;
         private System.Windows.Forms.TextBox tb_registerUsername;
         private System.Windows.Forms.Button btn_signUp;
@@ -475,6 +480,17 @@
         private System.Windows.Forms.TextBox tb_registerName;
         private System.Windows.Forms.Label lb_registerName;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel pan_credInterface;
+        private System.Windows.Forms.Label lb_accessRules;
+        private System.Windows.Forms.Label lb_orSignIn;
+        private System.Windows.Forms.Button btn_signIn;
+        private System.Windows.Forms.Button btn_login;
+        private System.Windows.Forms.TextBox tb_insertPassword;
+        private System.Windows.Forms.Label lb_insertPassword;
+        private System.Windows.Forms.TextBox tb_insertName;
+        private System.Windows.Forms.Label lb_insertName;
+        private System.Windows.Forms.Label lb_appTitleCred;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
