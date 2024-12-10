@@ -116,5 +116,11 @@
   <ItemGroup>
     <None Include="Resources\Garage.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Interruttore_Acceso.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Interruttore-removebg-preview.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

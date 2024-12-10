@@ -34,7 +34,6 @@ namespace Proprietari_di_casa__Client_
 
         // Data buffer for incoming data.  
         static byte[] bytes = new byte[1024];
-
         public static void StartClient()
         {
 
@@ -68,12 +67,12 @@ namespace Proprietari_di_casa__Client_
                 Console.WriteLine(e.ToString());
             }
         }
-        public static void SendMessage(string oggetto)
+        public static void SendMessage(string oggetto) // Manda messaggio al server
         {
             byte[] msg = Encoding.ASCII.GetBytes(oggetto);
             sender.Send(msg);
         }
-        public void ServerListener()
+        public void ServerListener() // Avvia un thread che continua a rimanere in ascolto
         {
             Thread listeningThread = new Thread(() =>
             {
@@ -85,10 +84,10 @@ namespace Proprietari_di_casa__Client_
                         int bytesRec = sender.Receive(bytes);
                         string data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
 
-                        // Mostra il messaggio o aggiornalo nell'interfaccia
+                        // Quando riceve un messaggio ne DELEGA la gestione ad una funzione
                         this.Invoke((MethodInvoker)delegate
                         {
-                            ManageMessage(data); // Puoi anche aggiornare un'etichetta o altro controllo
+                            ManageMessage(data); // Aggiorna i client
                         });
                     }
                     catch (SocketException ex)
@@ -99,7 +98,7 @@ namespace Proprietari_di_casa__Client_
                 }
             });
 
-            listeningThread.IsBackground = true; // Assicura che il thread si chiuda quando il form si chiude
+            listeningThread.IsBackground = true;
             listeningThread.Start();
         }
         private void ManageMessage(string data)
@@ -204,119 +203,84 @@ namespace Proprietari_di_casa__Client_
             btn_livingroomLights.Show();
             btn_backToMain.Show();
         }
-
         private void btn_TV_Click(object sender, EventArgs e)
         {
             string TV = "TV";
             SendMessage(TV);
-            //btn_TV.Text = $"TV: {controllo}";
         }
-
         private void btn_watering_Click(object sender, EventArgs e)
         {
             string watering = "Water";
             SendMessage(watering);
-
-            //btn_watering.Text = $"Irrigazione: {controllo}";
         }
-
         private void btn_entrances_Click(object sender, EventArgs e)
         {
             btn_entranceDoor.Show();
             btn_garageDoor.Show();
             btn_backToMain.Show();
         }
-
         private void btn_login_Click(object sender, EventArgs e)
         {
 
         }
-
         private void btn_signIn_Click(object sender, EventArgs e)
         {
             pan_signUp.Show();
         }
-
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             string exit = $"Exit";
             SendMessage(exit);
         }
-
         private void pan_credInterface_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void btn_signUp_Click(object sender, EventArgs e)
         {
             string signUp = $"SignUp;{tb_registerName.Text};{tb_registerUsername.Text};{tb_registerPassword.Text}";
             SendMessage(signUp);
-
-            /*string message = registrazione.Split(';')[0];
-            */
         }
-
         private void btn_loginToApp_Click(object sender, EventArgs e)
         {
             string login = $"Login;Nome;{tb_loginUsername.Text};{tb_loginPassword.Text}";
             SendMessage(login);
         }
-
         private void btn_signUpToApp_Click(object sender, EventArgs e)
         {
             pan_loginInterface.Hide();
             pan_signUp.Show();
         }
-
         private void btn_bedroomLights_Click(object sender, EventArgs e)
         {
             string lights = "Lights;Bedroom";
             SendMessage(lights);
-
-            //btn_bedroomLights.Text = $"Camera: {controllo}";
         }
-
         private void btn_kitchenLights_Click(object sender, EventArgs e)
         {
             string lights = "Lights;Kitchen";
             SendMessage(lights);
-
-            //btn_kitchenLights.Text = $"Cucina: {controllo}";
         }
-
         private void btn_livingroomLights_Click(object sender, EventArgs e)
         {
             string lights = "Lights;Livingroom";
             SendMessage(lights);
-
-            //btn_livingroomLights.Text = $"Salotto: {controllo}";
         }
-
         private void btn_bathroomLights_Click(object sender, EventArgs e)
         {
             string lights = "Lights;Bathroom";
             SendMessage(lights);
-
-            //btn_bathroomLights.Text = $"Bagno: {controllo}";
         }
-
         private void btn_entranceDoor_Click(object sender, EventArgs e)
         {
             string door = "Door;Entrance";
             SendMessage(door);
-
-            //btn_entranceDoor.Text = $"Portone: {controllo}";
         }
-
         private void btn_garageDoor_Click(object sender, EventArgs e)
         {
             string door = "Door;Garage";
             SendMessage(door);
-
-            //btn_garageDoor.Text = $"Garage: {controllo}";
         }
-
         private void btn_backToMain_Click(object sender, EventArgs e)
         {
             btn_bathroomLights.Hide();

@@ -13,7 +13,11 @@ public class SynchronousSocketListener
 {
     // Incoming data from the client.  
     public static string data = null;
+
+    // Percorso file elementi
     public static string elementsPath = @"..\..\Resources\Elementi.txt";
+
+    // Liste elementi e socket
     public static List<Elementi> ListaElementiServer = new List<Elementi>();
     public static List<Socket> AllSockets = new List<Socket>();
     public static void StartListening()
@@ -21,7 +25,6 @@ public class SynchronousSocketListener
         int count = 0;
 
         // Establish the local endpoint for the socket.  
-        // Dns.GetHostName returns the name of the   
         // host running the application.  
         IPAddress ipAddress = System.Net.IPAddress.Parse("127.0.0.1");
         IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 5000);
@@ -61,7 +64,7 @@ public class SynchronousSocketListener
 
     }
 
-    public static void Carica()
+    public static void LoadElements()
     {
         using (StreamReader elementsFile = new StreamReader(elementsPath))
         {
@@ -75,7 +78,7 @@ public class SynchronousSocketListener
     }
     public static int Main(String[] args)
     {
-        Carica();
+        LoadElements();
         StartListening();
         return 0;
     }
@@ -110,7 +113,6 @@ public class ClientManager
 
         string exit;
         string messageToServer;
-        byte[] msg;
 
         do
         {
