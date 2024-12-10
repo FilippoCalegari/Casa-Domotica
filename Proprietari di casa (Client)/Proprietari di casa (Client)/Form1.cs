@@ -82,10 +82,11 @@ namespace Proprietari_di_casa__Client_
         }
         private void btn_lights_Click(object sender, EventArgs e)
         {
-            string lights = "Lights";
-            string controllo = SendMessage(lights);
-
-            MessageBox.Show(controllo);
+            btn_bathroomLights.Show();
+            btn_bedroomLights.Show();
+            btn_kitchenLights.Show();
+            btn_livingroomLights.Show();
+            btn_backToMain.Show();
         }
 
         private void btn_TV_Click(object sender, EventArgs e)
@@ -106,10 +107,9 @@ namespace Proprietari_di_casa__Client_
 
         private void btn_entrances_Click(object sender, EventArgs e)
         {
-            string door = "Door";
-            string controllo = SendMessage(door);
-
-            MessageBox.Show(controllo);
+            btn_entranceDoor.Show();
+            btn_garageDoor.Show();
+            btn_backToMain.Show();
         }
 
         private void btn_login_Click(object sender, EventArgs e)
@@ -179,6 +179,65 @@ namespace Proprietari_di_casa__Client_
         {
             pan_loginInterface.Hide();
             pan_signUp.Show();
+        }
+
+        private void btn_bedroomLights_Click(object sender, EventArgs e)
+        {
+            string lights = "Lights;Bedroom";
+            string controllo = SendMessage(lights);
+
+            MessageBox.Show(controllo);
+        }
+
+        private void btn_kitchenLights_Click(object sender, EventArgs e)
+        {
+            string lights = "Lights;Kitchen";
+            string controllo = SendMessage(lights);
+
+            MessageBox.Show(controllo);
+        }
+
+        private void btn_livingroomLights_Click(object sender, EventArgs e)
+        {
+            string lights = "Lights;Livingroom";
+            string controllo = SendMessage(lights);
+
+            MessageBox.Show(controllo);
+        }
+
+        private void btn_bathroomLights_Click(object sender, EventArgs e)
+        {
+            string lights = "Lights;Bathroom";
+            string controllo = SendMessage(lights);
+
+            btn_bathroomLights.Text = $"Bagno: {controllo}";
+        }
+
+        private void btn_entranceDoor_Click(object sender, EventArgs e)
+        {
+            string door = "Door;Entrance";
+            string controllo = SendMessage(door);
+
+            MessageBox.Show(controllo);
+        }
+
+        private void btn_garageDoor_Click(object sender, EventArgs e)
+        {
+            string door = "Door;Garage";
+            string controllo = SendMessage(door);
+
+            MessageBox.Show(controllo);
+        }
+
+        private void btn_backToMain_Click(object sender, EventArgs e)
+        {
+            btn_bathroomLights.Hide();
+            btn_bedroomLights.Hide();
+            btn_kitchenLights.Hide();
+            btn_livingroomLights.Hide();
+            btn_entranceDoor.Hide();
+            btn_garageDoor.Hide();
+            btn_backToMain.Hide();
         }
     }
 }

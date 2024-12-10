@@ -100,12 +100,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Registration iPhone Background.png" />
-    <None Include="Resources\Blurred Backgorund.png" />
     <None Include="Resources\App iPhone Background.png" />
-    <Content Include="Resources\Image1.png" />
-    <None Include="Resources\Register_iPhone.png" />
-    <None Include="Resources\Normal_iPhone.png" />
-    <None Include="Resources\iPhone.png" />
+    <None Include="Resources\Cucina.jpg" />
+    <None Include="Resources\Bagno.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Camera da letto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salotto.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Porta Blindata.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Garage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

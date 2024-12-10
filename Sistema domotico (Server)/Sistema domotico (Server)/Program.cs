@@ -117,22 +117,84 @@ public class ClientManager
             switch (messaggio[0])
             {
                 case "Lights":
-                    if (elements[0].Valore == 1) // Se accese (= 1)
-                    {
-                        Console.WriteLine($"Luci: OFF");
-                        elements[0].Valore = 0;
 
-                        msg = Encoding.ASCII.GetBytes($"OFF");
-                        clientSocket.Send(msg);
-                    }
-                    else
+                    if (messaggio[1] == "Bedroom")
                     {
-                        Console.WriteLine($"Luci: ON");
-                        elements[0].Valore = 1;
+                        if (elements[0].Valore == 1) // Se accese (= 1)
+                        {
+                            Console.WriteLine($"Bedroom: OFF");
+                            elements[0].Valore = 0;
 
-                        msg = Encoding.ASCII.GetBytes($"ON");
-                        clientSocket.Send(msg);
+                            msg = Encoding.ASCII.GetBytes($"OFF");
+                            clientSocket.Send(msg);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Bedroom: ON");
+                            elements[0].Valore = 1;
+
+                            msg = Encoding.ASCII.GetBytes($"ON");
+                            clientSocket.Send(msg);
+                        }
                     }
+                    else if (messaggio[1] == "Livingroom")
+                    {
+                        if (elements[1].Valore == 1) // Se accese (= 1)
+                        {
+                            Console.WriteLine($"Livingroom: OFF");
+                            elements[1].Valore = 0;
+
+                            msg = Encoding.ASCII.GetBytes($"OFF");
+                            clientSocket.Send(msg);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Livingroom: ON");
+                            elements[1].Valore = 1;
+
+                            msg = Encoding.ASCII.GetBytes($"ON");
+                            clientSocket.Send(msg);
+                        }
+                    }
+                    else if (messaggio[1] == "Kitchen")
+                    {
+                        if (elements[2].Valore == 1) // Se accese (= 1)
+                        {
+                            Console.WriteLine($"Kitchen: OFF");
+                            elements[2].Valore = 0;
+
+                            msg = Encoding.ASCII.GetBytes($"OFF");
+                            clientSocket.Send(msg);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Kitchen: ON");
+                            elements[2].Valore = 1;
+
+                            msg = Encoding.ASCII.GetBytes($"ON");
+                            clientSocket.Send(msg);
+                        }
+                    }
+                    else if (messaggio[1] == "Bathroom")
+                    {
+                        if (elements[3].Valore == 1) // Se accese (= 1)
+                        {
+                            Console.WriteLine($"Bathroom: OFF");
+                            elements[3].Valore = 0;
+
+                            msg = Encoding.ASCII.GetBytes($"OFF");
+                            clientSocket.Send(msg);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Bathroom: ON");
+                            elements[3].Valore = 1;
+
+                            msg = Encoding.ASCII.GetBytes($"ON");
+                            clientSocket.Send(msg);
+                        }
+                    }
+
                     break;
 
                 case "TV":
@@ -174,22 +236,46 @@ public class ClientManager
                     break;
 
                 case "Door":
-                    if (elements[3].Valore == 1) // Se aperta (= 1)
-                    {
-                        Console.WriteLine($"Porta: Chiusa");
-                        elements[3].Valore = 0;
 
-                        msg = Encoding.ASCII.GetBytes($"CLOSED");
-                        clientSocket.Send(msg);
-                    }
-                    else
+                    if (messaggio[1] == "Entrance")
                     {
-                        Console.WriteLine($"Porta: Aperta");
-                        elements[3].Valore = 1;
+                        if (elements[6].Valore == 1) // Se accese (= 1)
+                        {
+                            Console.WriteLine($"Entrance: OFF");
+                            elements[6].Valore = 0;
 
-                        msg = Encoding.ASCII.GetBytes($"OPEN");
-                        clientSocket.Send(msg);
+                            msg = Encoding.ASCII.GetBytes($"OFF");
+                            clientSocket.Send(msg);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Entrance: ON");
+                            elements[6].Valore = 1;
+
+                            msg = Encoding.ASCII.GetBytes($"ON");
+                            clientSocket.Send(msg);
+                        }
                     }
+                    else if (messaggio[1] == "Garage")
+                    {
+                        if (elements[7].Valore == 1) // Se accese (= 1)
+                        {
+                            Console.WriteLine($"Garage: OFF");
+                            elements[7].Valore = 0;
+
+                            msg = Encoding.ASCII.GetBytes($"OFF");
+                            clientSocket.Send(msg);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Garage: ON");
+                            elements[7].Valore = 1;
+
+                            msg = Encoding.ASCII.GetBytes($"ON");
+                            clientSocket.Send(msg);
+                        }
+                    }
+                    
                     break;
 
                 case "Login":
@@ -218,6 +304,7 @@ public class ClientManager
                                 }
                                 else
                                 {
+                                    found = true;
                                     msg = Encoding.ASCII.GetBytes($"WrongPassword;null");
                                     clientSocket.Send(msg);
                                     break;

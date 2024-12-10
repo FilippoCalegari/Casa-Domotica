@@ -1,4 +1,8 @@
-illuminazione;0
+luci_camera;1
+luci_salotto;0
+luci_cucina;1
+luci_bagno;0
 TV;0
 irrigazione;0
-porte;1
+portone;1
+garage;1

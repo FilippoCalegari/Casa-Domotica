@@ -73,9 +73,39 @@ namespace Proprietari_di_casa__Client_.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Blurred_Backgorund {
+        internal static System.Drawing.Bitmap Bagno {
             get {
-                object obj = ResourceManager.GetObject("Blurred_Backgorund", resourceCulture);
+                object obj = ResourceManager.GetObject("Bagno", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Camera_da_letto {
+            get {
+                object obj = ResourceManager.GetObject("Camera_da_letto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cucina {
+            get {
+                object obj = ResourceManager.GetObject("Cucina", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Garage {
+            get {
+                object obj = ResourceManager.GetObject("Garage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,6 +153,16 @@ namespace Proprietari_di_casa__Client_.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Porta_Blindata {
+            get {
+                object obj = ResourceManager.GetObject("Porta_Blindata", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Portone {
             get {
                 object obj = ResourceManager.GetObject("Portone", resourceCulture);
@@ -136,6 +176,16 @@ namespace Proprietari_di_casa__Client_.Properties {
         internal static System.Drawing.Bitmap Registration_iPhone_Background {
             get {
                 object obj = ResourceManager.GetObject("Registration_iPhone_Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Salotto {
+            get {
+                object obj = ResourceManager.GetObject("Salotto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
