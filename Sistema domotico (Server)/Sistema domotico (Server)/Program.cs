@@ -12,6 +12,8 @@ public class SynchronousSocketListener
 {
     // Incoming data from the client.  
     public static string data = null;
+    public static string elementsPath = @"..\..\Resources\Elementi.txt";
+    public static List<Elementi> ListaElementiServer = new List<Elementi>();
     public static void StartListening()
     {
         int count = 0;
@@ -40,7 +42,7 @@ public class SynchronousSocketListener
                 Socket handler = listener.Accept();
                 count++;
 
-                ClientManager clientThread = new ClientManager(handler, count);
+                ClientManager clientThread = new ClientManager(handler, count, ref ListaElementiServer);
                 Thread t = new Thread(new ThreadStart(clientThread.doClient));
                 t.Start();
             }
@@ -55,8 +57,21 @@ public class SynchronousSocketListener
 
     }
 
+    public static void Carica()
+    {
+        using (StreamReader elementsFile = new StreamReader(elementsPath))
+        {
+            // Trascrivo gli elementi e i valori in una lista
+            foreach (string linea in File.ReadLines(elementsPath))
+            {
+                string line = elementsFile.ReadLine();
+                ListaElementiServer.Add(new Elementi(line.Split(';')[0], int.Parse(line.Split(';')[1])));
+            }
+        }
+    }
     public static int Main(String[] args)
     {
+        Carica();
         StartListening();
         return 0;
     }
@@ -64,19 +79,20 @@ public class SynchronousSocketListener
 public class ClientManager
 {
     Socket clientSocket;
+    List<Elementi> elementii;
     byte[] bytes = new Byte[1024];
     String data = "";
     int count;
 
-    public ClientManager(Socket clientSocket, int count)
+    public ClientManager(Socket clientSocket, int count, ref List<Elementi> Lista)
     {
+        elementii = Lista;
         this.clientSocket = clientSocket;
         this.count = count;
     }
     public void doClient()
     {
         // Percorsi file
-        string elementsPath = @"..\..\Resources\Elementi.txt";
         string credentialsPath = @"..\..\Resources\Credenziali.txt";
 
         // Elementi
@@ -93,17 +109,6 @@ public class ClientManager
         string dato;
 
         byte[] msg;
-
-        using (StreamReader elementsFile = new StreamReader(elementsPath))
-        {
-            // Trascrivo gli elementi e i valori in una lista
-            foreach (string linea in File.ReadLines(elementsPath))
-            {
-                string line = elementsFile.ReadLine();
-                element = new Elementi(line.Split(';')[0], int.Parse(line.Split(';')[1]));
-                elements.Add(element);
-            }
-        }
 
         do
         {
@@ -198,10 +203,10 @@ public class ClientManager
                     break;
 
                 case "TV":
-                    if (elements[1].Valore == 1) // Se accesa (= 1)
+                    if (elementii[4].Valore == 1) // Se accesa (= 1)
                     {
                         Console.WriteLine($"TV: OFF");
-                        elements[1].Valore = 0;
+                        elementii[4].Valore = 0;
 
                         msg = Encoding.ASCII.GetBytes($"OFF");
                         clientSocket.Send(msg);
@@ -209,7 +214,7 @@ public class ClientManager
                     else
                     {
                         Console.WriteLine($"TV: ON");
-                        elements[1].Valore = 1;
+                        elementii[4].Valore = 1;
 
                         msg = Encoding.ASCII.GetBytes($"ON");
                         clientSocket.Send(msg);
@@ -217,10 +222,10 @@ public class ClientManager
                     break;
 
                 case "Water":
-                    if (elements[2].Valore == 1) // Se accesa (= 1)
+                    if (elements[5].Valore == 1) // Se accesa (= 1)
                     {
                         Console.WriteLine($"Irrigazione: OFF");
-                        elements[2].Valore = 0;
+                        elements[5].Valore = 0;
 
                         msg = Encoding.ASCII.GetBytes($"OFF");
                         clientSocket.Send(msg);
@@ -228,7 +233,7 @@ public class ClientManager
                     else
                     {
                         Console.WriteLine($"Irrigazione: ON");
-                        elements[2].Valore = 1;
+                        elements[5].Valore = 1;
 
                         msg = Encoding.ASCII.GetBytes($"ON");
                         clientSocket.Send(msg);
@@ -349,14 +354,14 @@ public class ClientManager
 
         } while (dato != "Exit");
 
-        using (StreamWriter sw = new StreamWriter(elementsPath))
+        /*using (StreamWriter sw = new StreamWriter(@"..\..\Resources\Elementi.txt"))
         {
             // Sovrascrivo i valori modificati nel file
             foreach (Elementi elemento in elements)
             {
                 sw.WriteLine($"{elemento.Elemento};{elemento.Valore}");
             }
-        }
+        }*/
 
         clientSocket.Shutdown(SocketShutdown.Both);
         clientSocket.Close();

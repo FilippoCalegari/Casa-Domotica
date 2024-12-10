@@ -67,7 +67,6 @@ namespace Proprietari_di_casa__Client_
         }
         public static string SendMessage(string oggetto)
         {
-            // Echo the data back to the client.  
             byte[] msg = Encoding.ASCII.GetBytes(oggetto);
             sender.Send(msg);
 
@@ -93,8 +92,7 @@ namespace Proprietari_di_casa__Client_
         {
             string TV = "TV";
             string controllo = SendMessage(TV);
-
-            MessageBox.Show(controllo);
+            btn_TV.Text = $"TV: {controllo}";
         }
 
         private void btn_watering_Click(object sender, EventArgs e)
