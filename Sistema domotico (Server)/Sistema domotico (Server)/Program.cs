@@ -195,6 +195,7 @@ public class ClientManager
                 case "Login":
                     using (StreamReader credentialsFile = new StreamReader(credentialsPath))
                     {
+                        FileInfo fileInfo = new FileInfo(credentialsPath);
                         string line;
                         bool found = true;
 
@@ -228,7 +229,7 @@ public class ClientManager
                             }
                         }
 
-                        if (!found)
+                        if (!found || fileInfo.Length == 0)
                         {
                             msg = Encoding.ASCII.GetBytes($"SignUp;null");
                             clientSocket.Send(msg);
@@ -253,7 +254,7 @@ public class ClientManager
                         }
                     }
 
-                    msg = Encoding.ASCII.GetBytes($"SignedUp");
+                    msg = Encoding.ASCII.GetBytes($"SignedUp;{nome}");
                     clientSocket.Send(msg);
 
                     break;

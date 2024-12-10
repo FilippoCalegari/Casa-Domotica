@@ -99,6 +99,9 @@
     <None Include="Resources\Gradient Background Credentials.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Registration iPhone Background.png" />
+    <None Include="Resources\Blurred Backgorund.png" />
+    <None Include="Resources\App iPhone Background.png" />
     <Content Include="Resources\Image1.png" />
     <None Include="Resources\Register_iPhone.png" />
     <None Include="Resources\Normal_iPhone.png" />

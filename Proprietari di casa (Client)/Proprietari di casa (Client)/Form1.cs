@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
@@ -15,6 +16,8 @@ namespace Proprietari_di_casa__Client_
         private void Form1_Load(object sender, EventArgs e)
         {
             StartClient();
+            pan_loginInterface.Show();
+            this.BackgroundImage = Properties.Resources.Registration_iPhone_Background;
         }
 
         // Establish the remote endpoint for the socket.  
@@ -111,25 +114,7 @@ namespace Proprietari_di_casa__Client_
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            string login = $"Login;Nome;{tb_insertName.Text};{tb_insertPassword.Text}";
-            string accesso = SendMessage(login);
-
-            string message = accesso.Split(';')[0];
-            string nome = accesso.Split(';')[1];
-
-            if (message == "RightPassword")
-            {
-                pan_credInterface.Hide();
-                lb_subTitle.Text = $"Ciao {nome}\n Bentornato a casa";
-            }
-            else if (message == "WrongPassword")
-            {
-                lb_accessRules.Text = "Password errata.";
-            }
-            else if (message == "SignUp")
-            {
-                lb_accessRules.Text = "Utente non trovato: prova a registrarti.";
-            }
+            
         }
 
         private void btn_signIn_Click(object sender, EventArgs e)
@@ -153,10 +138,47 @@ namespace Proprietari_di_casa__Client_
             string signUp = $"SignUp;{tb_registerName.Text};{tb_registerUsername.Text};{tb_registerPassword.Text}";
             string registrazione = SendMessage(signUp);
 
-            if (registrazione == "SignedUp")
+            string message = registrazione.Split(';')[0];
+            string nome = registrazione.Split(';')[1];
+
+            if (message == "SignedUp")
             {
                 pan_signUp.Hide();
+                this.BackgroundImage = Properties.Resources.App_iPhone_Background;
+                panel_App.Show();
+                lb_subTitle.Text = $"Ciao {nome}\n Bentornato a casa";
             }
+        }
+
+        private void btn_loginToApp_Click(object sender, EventArgs e)
+        {
+            string login = $"Login;Nome;{tb_loginUsername.Text};{tb_loginPassword.Text}";
+            string accesso = SendMessage(login);
+
+            string message = accesso.Split(';')[0];
+            string nome = accesso.Split(';')[1];
+
+            if (message == "RightPassword")
+            {
+                pan_loginInterface.Hide();
+                panel_App.Show();
+                this.BackgroundImage = Properties.Resources.App_iPhone_Background;
+                lb_subTitle.Text = $"Ciao {nome}\n Bentornato a casa";
+            }
+            else if (message == "WrongPassword")
+            {
+                lb_loginErrors.Text = "Password errata.";
+            }
+            else if (message == "SignUp")
+            {
+                lb_loginErrors.Text = "Utente non trovato: prova a registrarti.";
+            }
+        }
+
+        private void btn_signUpToApp_Click(object sender, EventArgs e)
+        {
+            pan_loginInterface.Hide();
+            pan_signUp.Show();
         }
     }
 }

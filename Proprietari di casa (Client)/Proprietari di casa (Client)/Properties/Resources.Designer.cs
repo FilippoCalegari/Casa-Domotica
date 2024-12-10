@@ -63,6 +63,26 @@ namespace Proprietari_di_casa__Client_.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap App_iPhone_Background {
+            get {
+                object obj = ResourceManager.GetObject("App_iPhone_Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Blurred_Backgorund {
+            get {
+                object obj = ResourceManager.GetObject("Blurred_Backgorund", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gradient_Background {
             get {
                 object obj = ResourceManager.GetObject("Gradient_Background", resourceCulture);
@@ -103,16 +123,6 @@ namespace Proprietari_di_casa__Client_.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Normal_iPhone {
-            get {
-                object obj = ResourceManager.GetObject("Normal_iPhone", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Portone {
             get {
                 object obj = ResourceManager.GetObject("Portone", resourceCulture);
@@ -123,9 +133,9 @@ namespace Proprietari_di_casa__Client_.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Register_iPhone {
+        internal static System.Drawing.Bitmap Registration_iPhone_Background {
             get {
-                object obj = ResourceManager.GetObject("Register_iPhone", resourceCulture);
+                object obj = ResourceManager.GetObject("Registration_iPhone_Background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
