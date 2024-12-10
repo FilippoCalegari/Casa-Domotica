@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using System.Xml;
 using System.Xml.Linq;
 
 public class SynchronousSocketListener
@@ -14,6 +15,7 @@ public class SynchronousSocketListener
     public static string data = null;
     public static string elementsPath = @"..\..\Resources\Elementi.txt";
     public static List<Elementi> ListaElementiServer = new List<Elementi>();
+    public static List<Socket> AllSockets = new List<Socket>();
     public static void StartListening()
     {
         int count = 0;
@@ -42,7 +44,9 @@ public class SynchronousSocketListener
                 Socket handler = listener.Accept();
                 count++;
 
-                ClientManager clientThread = new ClientManager(handler, count, ref ListaElementiServer);
+                AllSockets.Add(handler);
+
+                ClientManager clientThread = new ClientManager(handler, count, ref ListaElementiServer, ref AllSockets);
                 Thread t = new Thread(new ThreadStart(clientThread.doClient));
                 t.Start();
             }
@@ -79,14 +83,16 @@ public class SynchronousSocketListener
 public class ClientManager
 {
     Socket clientSocket;
-    List<Elementi> elementii;
+    List<Elementi> Elementii;
+    List<Socket> Sockets;
     byte[] bytes = new Byte[1024];
     String data = "";
     int count;
 
-    public ClientManager(Socket clientSocket, int count, ref List<Elementi> Lista)
+    public ClientManager(Socket clientSocket, int count, ref List<Elementi> elementii, ref List<Socket> sockets)
     {
-        elementii = Lista;
+        Elementii = elementii;
+        Sockets = sockets;
         this.clientSocket = clientSocket;
         this.count = count;
     }
@@ -95,19 +101,15 @@ public class ClientManager
         // Percorsi file
         string credentialsPath = @"..\..\Resources\Credenziali.txt";
 
-        // Elementi
-        List <Elementi> elements = new List <Elementi>();
-        Elementi element;
-
         // Credenziali
-        List <Credenziali> credentials = new List <Credenziali>();
+        List<Credenziali> credentials = new List<Credenziali>();
         Credenziali credential;
         string nome;
         string username;
         string password;
 
-        string dato;
-
+        string exit;
+        string messageToServer;
         byte[] msg;
 
         do
@@ -116,7 +118,7 @@ public class ClientManager
 
             data = Encoding.ASCII.GetString(bytes, 0, bytesRec);
             string[] messaggio = data.Split(';');
-            dato = messaggio[0];
+            exit = messaggio[0];
 
             // Controllo che tipo di messaggio è arrivato dal client
             switch (messaggio[0])
@@ -125,162 +127,164 @@ public class ClientManager
 
                     if (messaggio[1] == "Bedroom")
                     {
-                        if (elements[0].Valore == 1) // Se accese (= 1)
+                        if (Elementii[0].Valore == 1) // Se accese (= 1)
                         {
                             Console.WriteLine($"Bedroom: OFF");
-                            elements[0].Valore = 0;
+                            Elementii[0].Valore = 0;
 
-                            msg = Encoding.ASCII.GetBytes($"OFF");
-                            clientSocket.Send(msg);
+                            messageToServer = "Bedroom;OFF";
                         }
                         else
                         {
                             Console.WriteLine($"Bedroom: ON");
-                            elements[0].Valore = 1;
+                            Elementii[0].Valore = 1;
 
-                            msg = Encoding.ASCII.GetBytes($"ON");
-                            clientSocket.Send(msg);
+                            messageToServer = "Bedroom;ON";
                         }
+
+                        SendToMultipleClients(Sockets, messageToServer);
                     }
                     else if (messaggio[1] == "Livingroom")
                     {
-                        if (elements[1].Valore == 1) // Se accese (= 1)
+                        if (Elementii[1].Valore == 1) // Se accese (= 1)
                         {
                             Console.WriteLine($"Livingroom: OFF");
-                            elements[1].Valore = 0;
+                            Elementii[1].Valore = 0;
 
-                            msg = Encoding.ASCII.GetBytes($"OFF");
-                            clientSocket.Send(msg);
+                            messageToServer = "Livingroom;OFF";
                         }
                         else
                         {
                             Console.WriteLine($"Livingroom: ON");
-                            elements[1].Valore = 1;
+                            Elementii[1].Valore = 1;
 
-                            msg = Encoding.ASCII.GetBytes($"ON");
-                            clientSocket.Send(msg);
+                            messageToServer = "Livingroom;ON";
                         }
+
+                        SendToMultipleClients(Sockets, messageToServer);
                     }
                     else if (messaggio[1] == "Kitchen")
                     {
-                        if (elements[2].Valore == 1) // Se accese (= 1)
+                        if (Elementii[2].Valore == 1) // Se accese (= 1)
                         {
                             Console.WriteLine($"Kitchen: OFF");
-                            elements[2].Valore = 0;
+                            Elementii[2].Valore = 0;
 
-                            msg = Encoding.ASCII.GetBytes($"OFF");
-                            clientSocket.Send(msg);
+                            messageToServer = "Kitchen;OFF";
                         }
                         else
                         {
                             Console.WriteLine($"Kitchen: ON");
-                            elements[2].Valore = 1;
+                            Elementii[2].Valore = 1;
 
-                            msg = Encoding.ASCII.GetBytes($"ON");
-                            clientSocket.Send(msg);
+                            messageToServer = "Kitchen;ON";
                         }
+
+                        SendToMultipleClients(Sockets, messageToServer);
                     }
                     else if (messaggio[1] == "Bathroom")
                     {
-                        if (elements[3].Valore == 1) // Se accese (= 1)
+                        if (Elementii[3].Valore == 1) // Se accese (= 1)
                         {
                             Console.WriteLine($"Bathroom: OFF");
-                            elements[3].Valore = 0;
+                            Elementii[3].Valore = 0;
 
-                            msg = Encoding.ASCII.GetBytes($"OFF");
-                            clientSocket.Send(msg);
+                            messageToServer = "Bathroom;OFF";
                         }
                         else
                         {
                             Console.WriteLine($"Bathroom: ON");
-                            elements[3].Valore = 1;
+                            Elementii[3].Valore = 1;
 
-                            msg = Encoding.ASCII.GetBytes($"ON");
-                            clientSocket.Send(msg);
+                            messageToServer = "Bathroom;ON";
                         }
+
+                        SendToMultipleClients(Sockets, messageToServer);
                     }
 
                     break;
 
                 case "TV":
-                    if (elementii[4].Valore == 1) // Se accesa (= 1)
+                    if (Elementii[4].Valore == 1) // Se accesa (= 1)
                     {
                         Console.WriteLine($"TV: OFF");
-                        elementii[4].Valore = 0;
+                        Elementii[4].Valore = 0;
 
-                        msg = Encoding.ASCII.GetBytes($"OFF");
-                        clientSocket.Send(msg);
+                        messageToServer = "TV;OFF";
                     }
                     else
                     {
                         Console.WriteLine($"TV: ON");
-                        elementii[4].Valore = 1;
+                        Elementii[4].Valore = 1;
 
-                        msg = Encoding.ASCII.GetBytes($"ON");
-                        clientSocket.Send(msg);
+                        messageToServer = "TV;ON";
                     }
+
+                    SendToMultipleClients(Sockets, messageToServer);
+
                     break;
 
                 case "Water":
-                    if (elements[5].Valore == 1) // Se accesa (= 1)
+                    if (Elementii[5].Valore == 1) // Se accesa (= 1)
                     {
                         Console.WriteLine($"Irrigazione: OFF");
-                        elements[5].Valore = 0;
+                        Elementii[5].Valore = 0;
 
-                        msg = Encoding.ASCII.GetBytes($"OFF");
-                        clientSocket.Send(msg);
+                        messageToServer = "Irrigazione;OFF";
                     }
                     else
                     {
                         Console.WriteLine($"Irrigazione: ON");
-                        elements[5].Valore = 1;
+                        Elementii[5].Valore = 1;
 
-                        msg = Encoding.ASCII.GetBytes($"ON");
-                        clientSocket.Send(msg);
+                        messageToServer = "Irrigazione;ON";
                     }
+
+                    SendToMultipleClients(Sockets, messageToServer);
+
                     break;
 
                 case "Door":
 
                     if (messaggio[1] == "Entrance")
                     {
-                        if (elements[6].Valore == 1) // Se accese (= 1)
+                        if (Elementii[6].Valore == 1) // Se accese (= 1)
                         {
-                            Console.WriteLine($"Entrance: OFF");
-                            elements[6].Valore = 0;
+                            Console.WriteLine($"Entrance: Closed");
+                            Elementii[6].Valore = 0;
 
-                            msg = Encoding.ASCII.GetBytes($"OFF");
-                            clientSocket.Send(msg);
+                            messageToServer = "Entrance;Chiuso";
                         }
                         else
                         {
-                            Console.WriteLine($"Entrance: ON");
-                            elements[6].Valore = 1;
+                            Console.WriteLine($"Entrance: Open");
+                            Elementii[6].Valore = 1;
 
-                            msg = Encoding.ASCII.GetBytes($"ON");
-                            clientSocket.Send(msg);
+                            messageToServer = "Entrance;Aperto";
                         }
+
+                        SendToMultipleClients(Sockets, messageToServer);
                     }
                     else if (messaggio[1] == "Garage")
                     {
-                        if (elements[7].Valore == 1) // Se accese (= 1)
+                        if (Elementii[7].Valore == 1) // Se accese (= 1)
                         {
-                            Console.WriteLine($"Garage: OFF");
-                            elements[7].Valore = 0;
+                            Console.WriteLine($"Garage: Closed");
+                            Elementii[7].Valore = 0;
 
-                            msg = Encoding.ASCII.GetBytes($"OFF");
-                            clientSocket.Send(msg);
+                            messageToServer = "Garage;Chiuso";
                         }
                         else
                         {
-                            Console.WriteLine($"Garage: ON");
-                            elements[7].Valore = 1;
+                            Console.WriteLine($"Garage: Open");
+                            Elementii[7].Valore = 1;
 
-                            msg = Encoding.ASCII.GetBytes($"ON");
-                            clientSocket.Send(msg);
+                            messageToServer = "Garage;Aperto";
                         }
+
+                        SendToMultipleClients(Sockets, messageToServer);
                     }
-                    
+
                     break;
 
                 case "Login":
@@ -297,23 +301,20 @@ public class ClientManager
 
                             if (username == messaggio[2])
                             {
+                                found = true;
+                                messageToServer = $"Login;WrongPassword;null";
+
                                 if (password == messaggio[3])
                                 {
-                                    found = true;
 
                                     nome = line.Split(';')[0];
 
-                                    msg = Encoding.ASCII.GetBytes($"RightPassword;{nome}");
-                                    clientSocket.Send(msg);
-                                    break;
+                                    messageToServer = $"Login;RightPassword;{nome}";
                                 }
-                                else
-                                {
-                                    found = true;
-                                    msg = Encoding.ASCII.GetBytes($"WrongPassword;null");
-                                    clientSocket.Send(msg);
-                                    break;
-                                }
+
+                                SendToClient(clientSocket, messageToServer);
+
+                                break;
                             }
                             else
                             {
@@ -323,8 +324,7 @@ public class ClientManager
 
                         if (!found || fileInfo.Length == 0)
                         {
-                            msg = Encoding.ASCII.GetBytes($"SignUp;null");
-                            clientSocket.Send(msg);
+                            SendToClient(clientSocket, $"Login;SignUp;null");
                         }
                     }
                     break;
@@ -346,26 +346,31 @@ public class ClientManager
                         }
                     }
 
-                    msg = Encoding.ASCII.GetBytes($"SignedUp;{nome}");
-                    clientSocket.Send(msg);
+                    SendToClient(clientSocket, $"SignedUp;{nome}");
 
                     break;
             }
-
-        } while (dato != "Exit");
-
-        /*using (StreamWriter sw = new StreamWriter(@"..\..\Resources\Elementi.txt"))
-        {
-            // Sovrascrivo i valori modificati nel file
-            foreach (Elementi elemento in elements)
-            {
-                sw.WriteLine($"{elemento.Elemento};{elemento.Valore}");
-            }
-        }*/
+        } while (exit != "Exit");
 
         clientSocket.Shutdown(SocketShutdown.Both);
         clientSocket.Close();
         data = "";
+    }
+    public void SendToClient(Socket socket, string message)
+    {
+        SendMessage(socket, message);
+    }
+    public void SendToMultipleClients(List<Socket> sockets, string message)
+    {
+        foreach (var socket in sockets)
+        {
+            SendMessage(socket, message);
+        }
+    }
+    public void SendMessage(Socket socket, string message)
+    {
+        byte[] bytes = Encoding.ASCII.GetBytes(message);
+        socket.Send(bytes);
     }
 }
 public class Credenziali
@@ -388,7 +393,7 @@ public class Credenziali
         get => _password;
         set => _password = value;
     }
-    public Credenziali (string nome, string username, string password)
+    public Credenziali(string nome, string username, string password)
     {
         Nome = nome;
         Username = username;
@@ -410,7 +415,7 @@ public class Elementi
         get => _valore;
         set => _valore = value;
     }
-    public Elementi (string elemento, int valore)
+    public Elementi(string elemento, int valore)
     {
         Elemento = elemento;
         Valore = valore;

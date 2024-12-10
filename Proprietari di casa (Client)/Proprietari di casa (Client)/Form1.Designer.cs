@@ -36,6 +36,7 @@
             this.lb_appTitle = new System.Windows.Forms.Label();
             this.lb_subTitle = new System.Windows.Forms.Label();
             this.panel_App = new System.Windows.Forms.Panel();
+            this.btn_backToMain = new System.Windows.Forms.Button();
             this.btn_garageDoor = new System.Windows.Forms.Button();
             this.btn_entranceDoor = new System.Windows.Forms.Button();
             this.btn_bathroomLights = new System.Windows.Forms.Button();
@@ -71,7 +72,6 @@
             this.tb_loginUsername = new System.Windows.Forms.TextBox();
             this.lb_loginUsername = new System.Windows.Forms.Label();
             this.lb_loginTitle = new System.Windows.Forms.Label();
-            this.btn_backToMain = new System.Windows.Forms.Button();
             this.panel_App.SuspendLayout();
             this.pan_credInterface.SuspendLayout();
             this.pan_signUp.SuspendLayout();
@@ -89,7 +89,7 @@
             this.btn_entrances.Name = "btn_entrances";
             this.btn_entrances.Size = new System.Drawing.Size(511, 157);
             this.btn_entrances.TabIndex = 0;
-            this.btn_entrances.Text = "Porte";
+            this.btn_entrances.Text = "Porte ⬇️";
             this.btn_entrances.UseVisualStyleBackColor = true;
             this.btn_entrances.Click += new System.EventHandler(this.btn_entrances_Click);
             // 
@@ -137,7 +137,7 @@
             this.btn_lights.Name = "btn_lights";
             this.btn_lights.Size = new System.Drawing.Size(512, 157);
             this.btn_lights.TabIndex = 3;
-            this.btn_lights.Text = "Illuminazione";
+            this.btn_lights.Text = "Illuminazione ⬇️";
             this.btn_lights.UseVisualStyleBackColor = false;
             this.btn_lights.Click += new System.EventHandler(this.btn_lights_Click);
             // 
@@ -191,6 +191,24 @@
             this.panel_App.TabIndex = 6;
             this.panel_App.Visible = false;
             // 
+            // btn_backToMain
+            // 
+            this.btn_backToMain.BackColor = System.Drawing.Color.Transparent;
+            this.btn_backToMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_backToMain.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btn_backToMain.FlatAppearance.BorderSize = 0;
+            this.btn_backToMain.Font = new System.Drawing.Font("Agency FB", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_backToMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
+            this.btn_backToMain.Location = new System.Drawing.Point(445, 1086);
+            this.btn_backToMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_backToMain.Name = "btn_backToMain";
+            this.btn_backToMain.Size = new System.Drawing.Size(99, 58);
+            this.btn_backToMain.TabIndex = 14;
+            this.btn_backToMain.Text = "⬅️";
+            this.btn_backToMain.UseVisualStyleBackColor = false;
+            this.btn_backToMain.Visible = false;
+            this.btn_backToMain.Click += new System.EventHandler(this.btn_backToMain_Click);
+            // 
             // btn_garageDoor
             // 
             this.btn_garageDoor.BackColor = System.Drawing.SystemColors.Control;
@@ -200,7 +218,7 @@
             this.btn_garageDoor.FlatAppearance.BorderSize = 0;
             this.btn_garageDoor.Font = new System.Drawing.Font("Agency FB", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_garageDoor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
-            this.btn_garageDoor.Location = new System.Drawing.Point(33, 752);
+            this.btn_garageDoor.Location = new System.Drawing.Point(31, 752);
             this.btn_garageDoor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_garageDoor.Name = "btn_garageDoor";
             this.btn_garageDoor.Size = new System.Drawing.Size(512, 324);
@@ -238,7 +256,7 @@
             this.btn_bathroomLights.FlatAppearance.BorderSize = 0;
             this.btn_bathroomLights.Font = new System.Drawing.Font("Agency FB", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_bathroomLights.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
-            this.btn_bathroomLights.Location = new System.Drawing.Point(33, 919);
+            this.btn_bathroomLights.Location = new System.Drawing.Point(30, 919);
             this.btn_bathroomLights.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_bathroomLights.Name = "btn_bathroomLights";
             this.btn_bathroomLights.Size = new System.Drawing.Size(512, 157);
@@ -276,7 +294,7 @@
             this.btn_bedroomLights.FlatAppearance.BorderSize = 0;
             this.btn_bedroomLights.Font = new System.Drawing.Font("Agency FB", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_bedroomLights.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
-            this.btn_bedroomLights.Location = new System.Drawing.Point(33, 418);
+            this.btn_bedroomLights.Location = new System.Drawing.Point(33, 420);
             this.btn_bedroomLights.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_bedroomLights.Name = "btn_bedroomLights";
             this.btn_bedroomLights.Size = new System.Drawing.Size(512, 157);
@@ -711,24 +729,6 @@
             this.lb_loginTitle.TabIndex = 4;
             this.lb_loginTitle.Text = "MyHome";
             this.lb_loginTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btn_backToMain
-            // 
-            this.btn_backToMain.BackColor = System.Drawing.Color.Transparent;
-            this.btn_backToMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btn_backToMain.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btn_backToMain.FlatAppearance.BorderSize = 0;
-            this.btn_backToMain.Font = new System.Drawing.Font("Agency FB", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_backToMain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(90)))), ((int)(((byte)(114)))));
-            this.btn_backToMain.Location = new System.Drawing.Point(445, 1086);
-            this.btn_backToMain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_backToMain.Name = "btn_backToMain";
-            this.btn_backToMain.Size = new System.Drawing.Size(99, 58);
-            this.btn_backToMain.TabIndex = 14;
-            this.btn_backToMain.Text = "⬅️";
-            this.btn_backToMain.UseVisualStyleBackColor = false;
-            this.btn_backToMain.Visible = false;
-            this.btn_backToMain.Click += new System.EventHandler(this.btn_backToMain_Click);
             // 
             // Form1
             // 
